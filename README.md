@@ -177,7 +177,7 @@ Ainsi que les accesseurs et mutateurs :
 >
 >On peut remarquer ainsi que « epack_data » est connecté à la BDD « epack_mutualisee » (lignes 66-67). C’est ici qu’il va falloir ajouter les colonnes en requête SQL via DBeaver. Par ailleurs la connexion est >confirmée quand j’observe les tables présentes dans cette BDD :
 >
->![alt text](https://github.com/theox33/Ticket-TW-611/blob/main/.img/dbeaver1.png)
+>![Capture d'écran 2024-07-19 155958](https://github.com/user-attachments/assets/2f62c5c1-7858-4000-92cf-e7cdb0abc988)
 
 Je modifie donc la table avec un script SQL :
 ```sql
