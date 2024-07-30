@@ -2,40 +2,40 @@
 
 # Table des matières
 
-- [🎯 Mission : BACKOFFICE - OptionUI – Rebranding](#mission--backoffice---optionui--rebranding)
-
-
-
-- [🔄 Modifications apportées](#modifications-apportées)
-  - [📁 1er fichier : SolutionController.php](#1er-fichier-)
-  - [📁 2e fichier : show.html.twig](#2e-fichier-)
-    - [✅ Implémentation des coches](#implémentation-des-coches)
-    - [🆕 Création d’un nouveau module CUSTOM](#création-dun-nouveau-module-custom)
-
-
-
-- [🔍 Vérification](#vérification)
-
-
-
-- [🔧 Fix](#fix)
-  - [🔧 Fix : wider modal](#fix--wider-modal)
-  - [🔧 Fix : enable continue button](#fix--enable-continue-buton)
-  - [🔧 Fix : update columns](#fix--update-columns)
-  - [🔧 Fix : oubli](#fix--oubli)
-
-
-
-- [🧪 Tests et Vérification](#tests-et-vérification)
-  - [⚙️ Mise en place](#mise-en-place)
-  - [🖥️ Test du Back-Office-Manager](#test-du-back-office-manager)
-
-
-
-- [🎥 Démonstration](#démonstration)
-  - [📹 1er test](#1er-test)
-  - [📹 2e test](#2e-test)
-  - [📹 3e test](#3e-test)
+> - [🎯 Mission : BACKOFFICE - OptionUI – Rebranding](#mission--backoffice---optionui--rebranding)
+> 
+> ___
+> 
+> - [🔄 Modifications apportées](#modifications-apportées)
+>   - [📁 1er fichier : SolutionController.php](#1er-fichier-)
+>   - [📁 2e fichier : show.html.twig](#2e-fichier-)
+>     - [✅ Implémentation des coches](#implémentation-des-coches)
+>     - [🆕 Création d’un nouveau module CUSTOM](#création-dun-nouveau-module-custom)
+>
+> ___
+>
+> - [🔍 Vérification](#vérification)
+>
+> ___
+>
+> - [🔧 Fix](#fix)
+>   - [🔧 Fix : wider modal](#fix--wider-modal)
+>   - [🔧 Fix : enable continue button](#fix--enable-continue-buton)
+>   - [🔧 Fix : update columns](#fix--update-columns)
+>   - [🔧 Fix : oubli](#fix--oubli)
+>
+> ___
+>
+> - [🧪 Tests et Vérification](#tests-et-vérification)
+>   - [⚙️ Mise en place](#mise-en-place)
+>   - [🖥️ Test du Back-Office-Manager](#test-du-back-office-manager)
+>
+> ___
+>
+> - [🎥 Démonstration](#démonstration)
+>   - [📹 1er test](#1er-test)
+>   - [📹 2e test](#2e-test)
+>   - [📹 3e test](#3e-test)
 
 
 ## Mission : [BACKOFFICE] - OptionUI – Rebranding
