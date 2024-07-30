@@ -27,6 +27,8 @@ ___
 > - **[🚀 Déploiement et Vérification](#-déploiement-et-vérification)**
 > ___
 
+---
+
 ## 🎯 Objectif
 
 ### Mission
@@ -59,6 +61,8 @@ Actuellement le fichier `optionsUI.xml` contient deux informations non synchroni
 #### Synchronisation
 
 - Examiner le code de la synchronisation de la version 5 (API V5) pour implémenter un mécanisme qui force la remontée et la relecture du fichier `optionsUI.xml` à chaque synchronisation garantissant ainsi la récupération de toutes les informations.
+
+---
 
 ## 📚 Documentation des applications ciblées
 
