@@ -18,7 +18,7 @@ En raison de la nature de mon travail et des politiques de sécurité de l'entre
 
 ## 📆 La Roadmap ( = La Frise Chronologique)
 
-La pièce maîtresse de ce répertoire est le [Projet GitHub associé](./projects). J'ai créé une frise chronologique dans ce projet pour détailler les étapes de recherche et de développement de chaque ticket. Chaque étape de la frise chronologique inclut un lien vers le dossier correspondant dans ce répertoire principal.
+La pièce maîtresse de ce répertoire est le [Projet GitHub associé](https://github.com/users/theox33/projects/1). J'ai créé une frise chronologique dans ce projet pour détailler les étapes de recherche et de développement de chaque ticket. Chaque étape de la frise chronologique inclut un lien vers le dossier correspondant dans ce répertoire principal.
 
 ### 🖱️ Utilisation de la Roadmap
 
