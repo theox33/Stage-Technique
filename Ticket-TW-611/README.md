@@ -3,7 +3,7 @@
 
 # Table des matières
 ___
-> - [🎯 Objectif](#-objectif-1)
+> - [🎯 Objectif](#objectif-1)
 >   - Mission
 >     - [Rebranding des Options UI pour les Grands Comptes](#mission)
 >
