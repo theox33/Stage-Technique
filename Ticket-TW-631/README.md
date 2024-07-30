@@ -1,6 +1,6 @@
 ### [🔙 retour vers le Projet complet](https://github.com/users/theox33/projects/1/views/1)
 
-## Mission : [BACKOFFICE] - OptionUI – Rebranding
+## 🎯 Mission : [BACKOFFICE] - OptionUI – Rebranding
 
 Description : Dans le cadre du rebranding, il est nécessaire de pouvoir modifier les deux informations CanGoBackHome et IsWebEPH uniquement pour un module custom via le backoffice.
 
@@ -54,9 +54,9 @@ ___
 >   - [📹 3e test](#3e-test)
 ___
 
-# Modifications apportées
+# 🔄 Modifications apportées
 
-## 1er fichier :
+## 📁 1er fichier :
 
 Je créé à partir du ticket sur Jira une branche GitLab avec la commande git checkout -b TW-631-backoffice-option-ui-rebranding afin que le Gitlab soit lié au ticket Jira.
 
@@ -160,7 +160,7 @@ Cette méthode récupère toutes les entrées SettingsOptionui actives associée
 
 Il faut donc ajouter dans ce tableau mes deux nouvelles entrées.
 
-## 2e fichier : 
+## 📁 2e fichier : 
 
 `templates\epack_manager\solution\show.html.twig`
 
@@ -177,7 +177,7 @@ Cette partie du code récupère les TypeFunctions actifs pour une solution donn�
 ![Image](https://github.com/user-attachments/assets/a3fbc3e2-91e5-4021-a1e5-d5b20c342166)
 ![Image](https://github.com/user-attachments/assets/8d4a6fad-356b-4755-817d-3e287cb12e4a)
 
-### Implémentation des coches
+### ✅ Implémentation des coches
 
 Ensuite, il me faut définir des coches afin d’activer ou non les paramètres.
 Avec Bootstrap V3, il est possible de créer des coches préfabriquées.
@@ -205,12 +205,12 @@ Ainsi, si `isTypeFunction28` est vraie, on doit pouvoir interagir avec la coche 
 J’implémente donc mes deux coches (lignes en vert) de manière similaire aux autres colonnes déjà présentes dans le tableau :
 ![Image](https://github.com/user-attachments/assets/e07e51ce-40ce-4dbd-b801-67c5acf55009)
 
-### Création d’un nouveau module CUSTOM
+### 🆕 Création d’un nouveau module CUSTOM
 
 Il existe un bouton identifié par `’#duplicateCustomButton’` qui nous permet de créer un nouveau module CUSTOM. Il faut donc ajouter les valeurs par défaut de mes deux nouveaux paramètres lors de la création d’un nouveau module CUSTOM : 
 ![Image](https://github.com/user-attachments/assets/6e59d13c-f578-4ed0-8125-deaef3b079ea)
 
-# Vérification
+# 🔍 Vérification
 
 Pour donner suite aux 2 tickets précédents, il me fallait corriger quelques erreurs.
 J’ai reçu un retour de la part de Noé sur mon ticket Jira avec les remarques :
@@ -225,11 +225,11 @@ Pour finir, une fois avoir modifier un des champs IsWebEPH ou CanGoBackHome puis
 
 Il me faut donc modifier quelques points dans mes programmes.
 
-# Fix
+# 🧰 Fix
 
 Suite aux **remarques de Noé** _(Voir dans : [🔗 Vérification](https://github.com/users/theox33/projects/1/views/1?pane=issue&itemId=72574004))_ sur mes tickets précédents, je dois apporter quelques modifications pour que tout fonctionne comme souhaité.
 
-## Fix : wider modal
+## 🔧 Fix : wider modal
 
 Afin d’agrandir la modale pour lire le tableau en entier, j’ai apporté les changements suivants dans le `Back-Office-Manager-V4` : 
 ![Image](https://github.com/user-attachments/assets/3fe1ee73-962e-4b76-aa97-1f4b9fb0960b)
@@ -247,7 +247,7 @@ width: 90%;
 ```
 Cette règle CSS ajuste la largeur de la boîte de dialogue à 90% de la largeur de son conteneur parent. En appliquant cette classe à la balise `<div>` de la boîte de dialogue, j’augmente donc sa largeur.
 
-## Fix : enable continue buton
+## 🔧 Fix : enable continue buton
 
 J’ai effectivement oublié d’activer le bouton « Continuer » pour enregistrer les modifications d’états de mes coches.
 
@@ -340,11 +340,11 @@ $('#newOptionUI').on('change', '.show-back-button-checkbox', function () {
 });
 ```
 
-## Fix : update columns
+## 🔧 Fix : update columns
 
 Dans les mêmes méthodes ci-dessus, je dois effectuer la bascule des valeurs des propriétés `isWebEPH` et `canGoBackHome` sinon les modifications ne vont pas s’effectuer dans la base de données.
 
-## Fix : oubli
+## 🔧 Fix : oubli
 
 Dans le fix que j’ai apporté hier, j’ai oublié d’y ajouter la fonction JS permettant d’activer le bouton `continuer` au clic de la coche `CanGoBackHome`. Ainsi que le fait que ces coches-ci doivent être désactivées mais également cochées par défaut.
 
@@ -354,9 +354,9 @@ Je l’ai donc ajouté ce matin :
 
 Je peux maintenant `merge` ma branche et tester à nouveau les fonctionnalités sur l’application web.
 
-# Tests et Vérification
+# 🧪 Tests et Vérification
 
-## Mise en place
+## ⚙️ Mise en place
 
 Afin de tester mes modifications je dois effectuer deux tests : 
 -	Au sein du « Back-Office-Manager-V4 » et la base de données
@@ -373,7 +373,7 @@ Je me connecte en SSH au serveur du `Back-Office-Manager-V4`, pull mon git et la
 Une fois que c’est fait, je vais sur `DBeaver` et affiche uniquement les colonnes de la table `settings_OptionUI` liées à ma solution.
 
 
-## Test du `Back-Office-Manager`
+## 🖥️ Test du `Back-Office-Manager`
 
 
 **Plan de test qualité**
@@ -386,9 +386,9 @@ Une fois que c’est fait, je vais sur `DBeaver` et affiche uniquement les colon
 | - Nouveau CUSTOM<br>- Colonne « IsWebEPH » = 1<br>- « CanGoBackHome » = 0 | Clic sur coche « IsWebEPH »           | -> Colonne « IsWebEPH » = 0<br>-> Bouton « Continuer » activé<br>-> « CanGoBackHome » = 0                       | -> Colonne « IsWebEPH » = 0<br>-> Bouton « Continuer » activé<br>-> « CanGoBackHome » = 0                       | Ok                                                                                                                                              | Le changement d’état d’une valeur antérieurement modifiée de IsWebEPH pris en compte dans la BDD.          |
 | - Nouveau CUSTOM<br>- « IsWebEPH » = 0<br>- « CanGoBackHome » = 0   | Clic sur coche « CanGoBackHome » puis « IsWebEPH » | -> Colonne « CanGoBackHome » = 1<br>-> Bouton « Continuer » activé<br>-> « IsWebEPH » = 1                       | -> Colonne « CanGoBackHome » = 1<br>-> Bouton « Continuer » activé<br>-> « IsWebEPH » = 1                       | Ok                                                                                                                                              | Les deux coches peuvent activer le bouton « Continuer » et le changement de valeur s’effectue pour plusieurs modifications à la fois            |
 
-## Démonstration
+## 🎥 Démonstration
 
-### 1er test
+### 📹 1er test
 
 > J’ai décoché les deux cases précédemment activées du module CUSTOM : 
 > 
@@ -396,7 +396,7 @@ Une fois que c’est fait, je vais sur `DBeaver` et affiche uniquement les colon
 > 
 > ![Image](https://github.com/user-attachments/assets/3da8627c-ba8f-4403-998b-46e5d0c6d76e)
 
-### 2e test
+### 📹 2e test
 
 > Et je les active à nouveau : 
 > 
@@ -404,7 +404,7 @@ Une fois que c’est fait, je vais sur `DBeaver` et affiche uniquement les colon
 > 
 > ![Image](https://github.com/user-attachments/assets/0698fb36-9103-4a6c-86c9-93aa66cb0f77)
 
-### 3e test
+### 📹 3e test
 
 > J’ai également créé un nouveau module CUSTOM, et activé les deux coches : 
 > 
