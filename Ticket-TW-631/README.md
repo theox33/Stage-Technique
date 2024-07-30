@@ -5,7 +5,7 @@
 - [Mission : BACKOFFICE - OptionUI – Rebranding](#mission--backoffice---optionui--rebranding)
 - [Modifications apportées](#modifications-apportées)
   - [1er fichier : SolutionController.php](#1er-fichier-)
-  - [2e fichier : show.html.twig](#2e-fichier--showhtmltwig)
+  - [2e fichier : show.html.twig](#2e-fichier-)
 - [Implémentation des coches](#implémentation-des-coches)
 - [Création d’un nouveau module CUSTOM](#création-d’un-nouveau-module-custom)
 - [Vérification](#vérification)
