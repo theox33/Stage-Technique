@@ -5,15 +5,15 @@
 ___
 > - [🎯 Objectif](#-objectif-1)
 >   - Mission
->     - [Rebranding des Options UI pour les Grands Comptes](#mission-1)
+>     - [Rebranding des Options UI pour les Grands Comptes](#mission)
 >
 >   - Description
->     - [Mise à jour des options UI et ajout de colonnes](#description-1)
+>     - [Mise à jour des options UI et ajout de colonnes](#description)
 > ___
 > - 🛠️ Solution Technique Détaillée
 >
 >   - Modifications du fichier `optionsUI.xml` (version 4)
->     - [Détails des modifications](#modifications-du-fichier-optionsUI.xml-version-4-1)
+>     - [Détails des modifications](#modifications-du-fichier-optionsUI.xml-version-4)
 >
 >   - Modifications côté API (version 4)
 >     - [Ajout des champs dans le modèle de données](#modifications-côté-api-version-4)
