@@ -11,7 +11,7 @@
 - [Vérification](#vérification)
 - [Fix](#fix)
   - [Fix : wider modal](#fix--wider-modal)
-  - [Fix : enable continue button](#fix--enable-continue-button)
+  - [Fix : enable continue button](#fix--enable-continue-buton)
   - [Fix : update columns](#fix--update-columns)
   - [Fix : oubli](#fix--oubli)
 - [Tests et Vérification](#tests-et-vérification)
