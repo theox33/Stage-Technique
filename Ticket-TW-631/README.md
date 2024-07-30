@@ -59,6 +59,7 @@ Il s'agit en réalité de la suite logique du 1er ticket [`TW-611`](https://gith
   > Ajouter les champs pour CanGoBackHome et IsWebEPH dans le template HTML du front, permettant aux utilisateurs de les modifier via l'interface backoffice.
 
 ___
+___
 
 # 🔄 Modifications apportées
 
@@ -217,6 +218,7 @@ Il existe un bouton identifié par `’#duplicateCustomButton’` qui nous perme
 ![Image](https://github.com/user-attachments/assets/6e59d13c-f578-4ed0-8125-deaef3b079ea)
 
 ___
+___
 
 # 🔍 Vérification
 
@@ -233,6 +235,7 @@ Pour finir, une fois avoir modifier un des champs IsWebEPH ou CanGoBackHome puis
 
 Il me faut donc modifier quelques points dans mes programmes.
 
+___
 ___
 
 # 🧰 Fix
@@ -365,6 +368,7 @@ Je l’ai donc ajouté ce matin :
 Je peux maintenant `merge` ma branche et tester à nouveau les fonctionnalités sur l’application web.
 
 ___
+___
 
 # 🧪 Tests et Vérification
 
@@ -398,6 +402,7 @@ Une fois que c’est fait, je vais sur `DBeaver` et affiche uniquement les colon
 | - Nouveau CUSTOM<br>- Colonne « IsWebEPH » = 1<br>- « CanGoBackHome » = 0 | Clic sur coche « IsWebEPH »           | -> Colonne « IsWebEPH » = 0<br>-> Bouton « Continuer » activé<br>-> « CanGoBackHome » = 0                       | -> Colonne « IsWebEPH » = 0<br>-> Bouton « Continuer » activé<br>-> « CanGoBackHome » = 0                       | Ok                                                                                                                                              | Le changement d’état d’une valeur antérieurement modifiée de IsWebEPH pris en compte dans la BDD.          |
 | - Nouveau CUSTOM<br>- « IsWebEPH » = 0<br>- « CanGoBackHome » = 0   | Clic sur coche « CanGoBackHome » puis « IsWebEPH » | -> Colonne « CanGoBackHome » = 1<br>-> Bouton « Continuer » activé<br>-> « IsWebEPH » = 1                       | -> Colonne « CanGoBackHome » = 1<br>-> Bouton « Continuer » activé<br>-> « IsWebEPH » = 1                       | Ok                                                                                                                                              | Les deux coches peuvent activer le bouton « Continuer » et le changement de valeur s’effectue pour plusieurs modifications à la fois            |
 
+___
 ___
 
 ## 🎥 Démonstration
