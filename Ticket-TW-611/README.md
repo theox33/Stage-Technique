@@ -27,8 +27,6 @@ ___
 > - **[🚀 Déploiement et Vérification](#-déploiement-et-vérification)**
 > ___
 
----
-
 ## 🎯 Objectif
 
 ### Mission
@@ -62,7 +60,7 @@ Actuellement le fichier `optionsUI.xml` contient deux informations non synchroni
 
 - Examiner le code de la synchronisation de la version 5 (API V5) pour implémenter un mécanisme qui force la remontée et la relecture du fichier `optionsUI.xml` à chaque synchronisation garantissant ainsi la récupération de toutes les informations.
 
----
+___
 
 ## 📚 Documentation des applications ciblées
 
@@ -70,7 +68,7 @@ Actuellement le fichier `optionsUI.xml` contient deux informations non synchroni
 
 Le Back-office sert d’API entre une base de données configurateur grand compte et le Configurateur. Elle permet la gestion des configurations/modèles pour les clients grand compte. Elle est représentée sous forme d’API REST.
 
-*Documentation complète ici*
+*[Documentation complète ici](https://github.com/theox33/Stage-Technique/wiki/Back%E2%80%90Office%E2%80%90Manager%E2%80%90V4-%E2%80%90-HOME)*
 
 ### API ePack V4
 
@@ -83,7 +81,9 @@ Cette version de l’API contient les fonctionnalités suivantes :
 - Les routes utilitaires BackOffice qui permettent de lancer des tâches 'lourdes' ou de manipulation de données depuis le « BackOffice ePack-Manager ».
 - Des processus s'exécutant en tâche de fond (workers) chacun dédié à une action précise.
 
-*Documentation détaillée ici*
+*[Documentation détaillée ici](https://github.com/theox33/Stage-Technique/wiki/ePack%E2%80%90API)*
+
+___
 
 ## 🔄 Modifications apportées
 
@@ -248,6 +248,8 @@ Ainsi de manière similaire :
     public $CanGoBackHome;
 [...]
 ```
+
+___
 
 ## 🚀 Déploiement et Vérification
 
