@@ -36,7 +36,7 @@ ___
 >
 > - [🔧 Fix](#fix)
 >   - [🔧 Fix : wider modal](#-fix--wider-modal)
->   - [🔧 Fix : enable continue button](#-fix--enable-continue-buton)
+>   - [🔧 Fix : enable continue button](#-fix--enable-continue-button)
 >   - [🔧 Fix : update columns](#-fix--update-columns)
 >   - [🔧 Fix : oubli](#-fix--oubli)
 >
@@ -247,7 +247,7 @@ width: 90%;
 ```
 Cette règle CSS ajuste la largeur de la boîte de dialogue à 90% de la largeur de son conteneur parent. En appliquant cette classe à la balise `<div>` de la boîte de dialogue, j’augmente donc sa largeur.
 
-## 🔧 Fix : enable continue buton
+## 🔧 Fix : enable continue button
 
 J’ai effectivement oublié d’activer le bouton « Continuer » pour enregistrer les modifications d’états de mes coches.
 
