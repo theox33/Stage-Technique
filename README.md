@@ -25,7 +25,7 @@ Je recommande aux lecteurs de commencer leur exploration par la `frise chronolog
 #### Afin de voir les détails des missions ( = tickets) :
 
 1. Cliquez sur la `timeline` d'un ticket
-2. Dans la fenêtre contextuelle, cliquez sur le titre en guise de lien
+2. Dans la fenêtre contextuelle, cliquez sur le titre en guise de lien -> 🔗
 3. Vous êtes dans le ticket !
 
    ![image](https://github.com/user-attachments/assets/a501d25f-6536-4935-8eed-a595ac77da18)
