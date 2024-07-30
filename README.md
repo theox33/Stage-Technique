@@ -28,7 +28,7 @@ Je recommande aux lecteurs de commencer leur exploration par la `frise chronolog
 
 </br>
 <div align="center">  
-  <a href="./projects/1">
+  <a href="https://github.com/users/theox33/projects/1">
     <img src="https://img.shields.io/badge/Explorez_la_Roadmap-vert?style=for-the-badge" alt="🔎 Explorez la Roadmap 🔍">
   </a>
 </div>
