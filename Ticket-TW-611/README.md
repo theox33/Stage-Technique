@@ -1,7 +1,55 @@
 ### [🔙 retour vers le Projet complet](https://github.com/users/theox33/projects/1/views/1)
-# Ticket TW-611
+# 🎫 Ticket TW-611
 
-## Objectif
+# Table des matières
+___
+> - ## 🎯 Objectif
+>   - ### Mission
+>     - [Rebranding des Options UI pour les Grands Comptes](#mission)
+>
+>   - ### Description
+>     - [Mise à jour des options UI et ajout de colonnes](#description)
+> ___
+> - ## 🛠️ Solution Technique Détaillée
+>
+>   - ### Modifications du fichier `optionsUI.xml` (version 4)
+>     - [Détails des modifications](#modifications-du-fichier-optionsUI.xml-version-4)
+>
+>   - ### Modifications côté API (version 4)
+>     - [Ajout des champs dans le modèle de données](#modifications-côté-api-version-4)
+>
+>   - ### Script SQL
+>     - [Écrire un script pour ajouter des colonnes](#script-sql)
+>
+>   - ### Synchronisation
+>     - [Implémentation du mécanisme de synchronisation](#synchronisation)
+> ___
+> - ## 📚 Documentation des applications ciblées
+>
+>   - ### API Back-Office
+>     - [Description de l'API Back-Office](#api-back-office)
+>
+>   - ### API ePack V4
+>     - [Description de l'API ePack V4](#api-epack-v4)
+> ___
+> - ## 🔄 Modifications apportées
+>
+>   - ### Analyse des documents de référence
+>     - [Étude de la documentation et planification](#analyse-des-documents-de-référence)
+>
+>   - ### Analyse des répertoires GitLab et implémentation de la fonctionnalité
+>     - #### App « back-office-manager-v4 »
+>       - [Recherche et modifications de fichiers](#app-back-office-manager-v4)
+>     - #### Base de données « db_mutualisée » d’epack_manager
+>       - [Ajout de colonnes via script SQL](#base-de-données-db_mutualisée-depack_manager)
+>     - #### EPACK-API
+>       - [Modifications de l'API pour gérer les nouvelles colonnes](#epack-api)
+> ___
+> - ## 🚀 Déploiement et Vérification
+>   - [Vérification de l'implémentation avec Docker](#déploiement-et-vérification)
+> ___
+
+## 🎯 Objectif
 
 ### Mission
 
@@ -13,7 +61,7 @@ Dans le cadre du rebranding il est nécessaire de mettre à jour les options UI 
 - Ajouter deux colonnes dans le modèle de données : `IsWebEPH` et `CanGoBackHome`.
 - Forcer la remontée et la relecture du fichier `optionsUI.xml` lors de chaque synchronisation.
 
-### Solution Technique Détaillée
+### 🛠️ Solution Technique Détaillée
 
 #### Modifications du fichier `optionsUI.xml` (version 4)
 
@@ -34,7 +82,7 @@ Actuellement le fichier `optionsUI.xml` contient deux informations non synchroni
 
 - Examiner le code de la synchronisation de la version 5 (API V5) pour implémenter un mécanisme qui force la remontée et la relecture du fichier `optionsUI.xml` à chaque synchronisation garantissant ainsi la récupération de toutes les informations.
 
-## Documentation des applications ciblées
+## 📚 Documentation des applications ciblées
 
 ### API Back-Office
 
@@ -55,7 +103,7 @@ Cette version de l’API contient les fonctionnalités suivantes :
 
 *Documentation détaillée ici*
 
-## Modifications apportées
+## 🔄 Modifications apportées
 
 ### Analyse des documents de référence
 
@@ -219,6 +267,6 @@ Ainsi de manière similaire :
 [...]
 ```
 
-## Déploiement et Vérification
+## 🚀 Déploiement et Vérification
 
 Je vérifie la bonne implémentation des nouvelles fonctionnalités avec Docker.
