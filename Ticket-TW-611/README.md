@@ -5,7 +5,7 @@
 ___
 > - ## 🎯 Objectif
 >   - ### Mission
->     - [Rebranding des Options UI pour les Grands Comptes](#mission)
+>     - [Rebranding des Options UI pour les Grands Comptes](#-objectif)
 >
 >   - ### Description
 >     - [Mise à jour des options UI et ajout de colonnes](#description)
