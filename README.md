@@ -1,5 +1,3 @@
-### [🔙 retour vers la Roadmap](https://github.com/users/theox33/projects/1)
-
 # Bienvenue dans mon Répertoire de Stage
 
 Bienvenue dans ce répertoire GitHub dédié à mon stage en entreprise. Ce répertoire a été conçu pour garder une trace détaillée de toutes les missions que j'effectue pendant cette période. Vous trouverez ici une structure organisée par dossiers, chaque dossier correspondant à un ticket ou une mission spécifique.
