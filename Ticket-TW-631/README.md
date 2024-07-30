@@ -29,7 +29,7 @@ ___
 > ___
 >
 > - **[🧪 Tests et Vérification](#-tests-et-vérification)**
->   - [⚙️ Mise en place](#-mise-en-place)
+>   - [⚙️ Mise en place](##%EF%B8%8F-mise-en-place)
 >   - [🖥️ Test du Back-Office-Manager](#-test-du-back-office-manager)
 >
 > ___
