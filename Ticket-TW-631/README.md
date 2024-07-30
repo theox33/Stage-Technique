@@ -3,20 +3,25 @@
 # Table des matières
 
 - [🎯 Mission : BACKOFFICE - OptionUI – Rebranding](#mission--backoffice---optionui--rebranding)
+
 - [🔄 Modifications apportées](#modifications-apportées)
   - [📁 1er fichier : SolutionController.php](#1er-fichier-)
   - [📁 2e fichier : show.html.twig](#2e-fichier-)
-- [✅ Implémentation des coches](#implémentation-des-coches)
-- [🆕 Création d’un nouveau module CUSTOM](#création-dun-nouveau-module-custom)
+    - [✅ Implémentation des coches](#implémentation-des-coches)
+    - [🆕 Création d’un nouveau module CUSTOM](#création-dun-nouveau-module-custom)
+
 - [🔍 Vérification](#vérification)
+
 - [🔧 Fix](#fix)
   - [🔧 Fix : wider modal](#fix--wider-modal)
   - [🔧 Fix : enable continue button](#fix--enable-continue-buton)
   - [🔧 Fix : update columns](#fix--update-columns)
   - [🔧 Fix : oubli](#fix--oubli)
+
 - [🧪 Tests et Vérification](#tests-et-vérification)
   - [⚙️ Mise en place](#mise-en-place)
   - [🖥️ Test du Back-Office-Manager](#test-du-back-office-manager)
+
 - [🎥 Démonstration](#démonstration)
   - [📹 1er test](#1er-test)
   - [📹 2e test](#2e-test)
@@ -162,7 +167,7 @@ Cette partie du code récupère les TypeFunctions actifs pour une solution donn�
 ![Image](https://github.com/user-attachments/assets/a3fbc3e2-91e5-4021-a1e5-d5b20c342166)
 ![Image](https://github.com/user-attachments/assets/8d4a6fad-356b-4755-817d-3e287cb12e4a)
 
-## Implémentation des coches
+### Implémentation des coches
 
 Ensuite, il me faut définir des coches afin d’activer ou non les paramètres.
 Avec Bootstrap V3, il est possible de créer des coches préfabriquées.
@@ -190,7 +195,7 @@ Ainsi, si `isTypeFunction28` est vraie, on doit pouvoir interagir avec la coche 
 J’implémente donc mes deux coches (lignes en vert) de manière similaire aux autres colonnes déjà présentes dans le tableau :
 ![Image](https://github.com/user-attachments/assets/e07e51ce-40ce-4dbd-b801-67c5acf55009)
 
-## Création d’un nouveau module CUSTOM
+### Création d’un nouveau module CUSTOM
 
 Il existe un bouton identifié par `’#duplicateCustomButton’` qui nous permet de créer un nouveau module CUSTOM. Il faut donc ajouter les valeurs par défaut de mes deux nouveaux paramètres lors de la création d’un nouveau module CUSTOM : 
 ![Image](https://github.com/user-attachments/assets/6e59d13c-f578-4ed0-8125-deaef3b079ea)
