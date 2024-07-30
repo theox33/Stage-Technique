@@ -27,10 +27,16 @@ Je recommande aux lecteurs de commencer leur exploration par la `frise chronolog
 ---
 
 <div align="center">
-  <a href="./projects" style="text-decoration: none;">
-    <button style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px;">
-      Explorez la Roadmap
-    </button>
+  <a href="./projects" style="
+    display: inline-block;
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;">
+    Explorez la Roadmap
   </a>
 </div>
 
