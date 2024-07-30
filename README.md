@@ -27,3 +27,7 @@ Je recommande aux lecteurs de commencer leur exploration par la `frise chronolog
 ---
 
 Merci de votre visite et bonne exploration !
+
+---
+
+[![Explorez la Roadmap](https://img.shields.io/badge/Explorez_la_Roadmap-vert?style=for-the-badge)](./projects/1)
