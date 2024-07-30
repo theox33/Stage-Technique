@@ -22,6 +22,19 @@ La pièce maîtresse de ce répertoire est le [Projet GitHub associé](https://g
 
 Je recommande aux lecteurs de commencer leur exploration par la `frise chronologique`. Elle offre une **vue d'ensemble des activités** et permet de naviguer facilement entre les différents dossiers et travaux. Vous pouvez ainsi **suivre le déroulement de mes journées** et de mes missions tout au long de ces 4 mois de stage.
 
+#### Afin de voir les détails des missions ( = tickets) :
+
+1. Cliquez sur la `timeline` d'un ticket
+2. Dans la fenêtre contextuelle, cliquez sur le titre en guise de lien
+3. Vous êtes dans le ticket !
+
+   ![image](https://github.com/user-attachments/assets/a501d25f-6536-4935-8eed-a595ac77da18)
+
+
+#### Revenir sur la Roadmap :
+
+1. Dans chaque ticket, vous pouvez revenir sur la `Roadmap` en cliquant sur le lien toujours disponible en tête du README.md
+
 ---
 
 </br>
