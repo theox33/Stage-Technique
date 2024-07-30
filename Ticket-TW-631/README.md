@@ -1,7 +1,7 @@
 ### [🔙 retour vers le Projet complet](https://github.com/users/theox33/projects/1/views/1)
 
 # Table des matières
-
+___
 > - [🎯 Mission : BACKOFFICE - OptionUI – Rebranding](#mission--backoffice---optionui--rebranding)
 > 
 > ___
@@ -36,7 +36,7 @@
 >   - [📹 1er test](#1er-test)
 >   - [📹 2e test](#2e-test)
 >   - [📹 3e test](#3e-test)
-
+___
 
 ## Mission : [BACKOFFICE] - OptionUI – Rebranding
 
