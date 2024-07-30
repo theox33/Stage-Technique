@@ -3,49 +3,49 @@
 
 # Table des matières
 ___
-> - ## [🎯 Objectif](#-objectif-1)
->   - ### Mission
+> - [🎯 Objectif](#-objectif-1)
+>   - Mission
 >     - [Rebranding des Options UI pour les Grands Comptes](#mission-1)
 >
->   - ### Description
+>   - Description
 >     - [Mise à jour des options UI et ajout de colonnes](#description-1)
 > ___
-> - ## 🛠️ Solution Technique Détaillée
+> - 🛠️ Solution Technique Détaillée
 >
->   - ### Modifications du fichier `optionsUI.xml` (version 4)
+>   - Modifications du fichier `optionsUI.xml` (version 4)
 >     - [Détails des modifications](#modifications-du-fichier-optionsUI.xml-version-4-1)
 >
->   - ### Modifications côté API (version 4)
+>   - Modifications côté API (version 4)
 >     - [Ajout des champs dans le modèle de données](#modifications-côté-api-version-4)
 >
->   - ### Script SQL
+>   - Script SQL
 >     - [Écrire un script pour ajouter des colonnes](#script-sql)
 >
->   - ### Synchronisation
+>   - Synchronisation
 >     - [Implémentation du mécanisme de synchronisation](#synchronisation)
 > ___
-> - ## 📚 Documentation des applications ciblées
+> - 📚 Documentation des applications ciblées
 >
->   - ### API Back-Office
+>   - API Back-Office
 >     - [Description de l'API Back-Office](#api-back-office)
 >
->   - ### API ePack V4
+>   - API ePack V4
 >     - [Description de l'API ePack V4](#api-epack-v4)
 > ___
-> - ## 🔄 Modifications apportées
+> - 🔄 Modifications apportées
 >
->   - ### Analyse des documents de référence
+>   - Analyse des documents de référence
 >     - [Étude de la documentation et planification](#analyse-des-documents-de-référence)
 >
->   - ### Analyse des répertoires GitLab et implémentation de la fonctionnalité
->     - #### App « back-office-manager-v4 »
+>   - Analyse des répertoires GitLab et implémentation de la fonctionnalité
+>     - App « back-office-manager-v4 »
 >       - [Recherche et modifications de fichiers](#app-back-office-manager-v4)
->     - #### Base de données « db_mutualisée » d’epack_manager
+>     - Base de données « db_mutualisée » d’epack_manager
 >       - [Ajout de colonnes via script SQL](#base-de-données-db_mutualisée-depack_manager)
->     - #### EPACK-API
+>     - EPACK-API
 >       - [Modifications de l'API pour gérer les nouvelles colonnes](#epack-api)
 > ___
-> - ## 🚀 Déploiement et Vérification
+> - 🚀 Déploiement et Vérification
 >   - [Vérification de l'implémentation avec Docker](#déploiement-et-vérification)
 > ___
 
