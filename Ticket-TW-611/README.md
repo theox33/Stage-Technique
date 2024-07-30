@@ -3,40 +3,19 @@
 
 # Table des matières
 ___
-> - [🎯 Objectif](#-objectif)
->   - Mission
->     - [Rebranding des Options UI pour les Grands Comptes](#mission)
->
->   - Description
->     - [Mise à jour des options UI et ajout de colonnes](#description)
+> - **[🎯 Objectif](#-objectif)**
 > ___
-> - 🛠️ Solution Technique Détaillée
->
->   - Modifications du fichier `optionsUI.xml` (version 4)
->     - [Détails des modifications](#modifications-du-fichier-optionsUI.xml-version-4)
->
->   - Modifications côté API (version 4)
->     - [Ajout des champs dans le modèle de données](#modifications-côté-api-version-4)
->
->   - Script SQL
->     - [Écrire un script pour ajouter des colonnes](#script-sql)
->
->   - Synchronisation
->     - [Implémentation du mécanisme de synchronisation](#synchronisation)
+> - **[🛠️ Solution Technique Détaillée](#%EF%B8%8F-solution-technique-détaillée)**
 > ___
-> - 📚 Documentation des applications ciblées
->
+> - **[📚 Documentation des applications ciblées](#-documentation-des-applications-ciblées)**
 >   - API Back-Office
 >     - [Description de l'API Back-Office](#api-back-office)
->
 >   - API ePack V4
 >     - [Description de l'API ePack V4](#api-epack-v4)
 > ___
-> - 🔄 Modifications apportées
->
+> - **[🔄 Modifications apportées](#-modifications-apportées)**
 >   - Analyse des documents de référence
 >     - [Étude de la documentation et planification](#analyse-des-documents-de-référence)
->
 >   - Analyse des répertoires GitLab et implémentation de la fonctionnalité
 >     - App « back-office-manager-v4 »
 >       - [Recherche et modifications de fichiers](#app-back-office-manager-v4)
@@ -45,8 +24,7 @@ ___
 >     - EPACK-API
 >       - [Modifications de l'API pour gérer les nouvelles colonnes](#epack-api)
 > ___
-> - 🚀 Déploiement et Vérification
->   - [Vérification de l'implémentation avec Docker](#déploiement-et-vérification)
+> - **[🚀 Déploiement et Vérification](#-déploiement-et-vérification)**
 > ___
 
 ## 🎯 Objectif
