@@ -40,6 +40,8 @@ ___
 >   - ### [📹 3e test](#-3e-test)
 ___
 
+___
+
 ## 🎯 Mission : [BACKOFFICE] - OptionUI – Rebranding
 
 Description : Dans le cadre du rebranding, il est nécessaire de pouvoir modifier les deux informations CanGoBackHome et IsWebEPH uniquement pour un module custom via le backoffice.
@@ -55,6 +57,8 @@ Il s'agit en réalité de la suite logique du 1er ticket [`TW-611`](https://gith
 
 - Mise à jour du front dans `templates\epack_manager\solution\show.html.twig` :
   > Ajouter les champs pour CanGoBackHome et IsWebEPH dans le template HTML du front, permettant aux utilisateurs de les modifier via l'interface backoffice.
+
+___
 
 # 🔄 Modifications apportées
 
@@ -212,6 +216,8 @@ J’implémente donc mes deux coches (lignes en vert) de manière similaire aux 
 Il existe un bouton identifié par `’#duplicateCustomButton’` qui nous permet de créer un nouveau module CUSTOM. Il faut donc ajouter les valeurs par défaut de mes deux nouveaux paramètres lors de la création d’un nouveau module CUSTOM : 
 ![Image](https://github.com/user-attachments/assets/6e59d13c-f578-4ed0-8125-deaef3b079ea)
 
+___
+
 # 🔍 Vérification
 
 Pour donner suite aux 2 tickets précédents, il me fallait corriger quelques erreurs.
@@ -226,6 +232,8 @@ De plus lorsque l’on décide de cocher/décocher un des deux paramètres, le b
 Pour finir, une fois avoir modifier un des champs IsWebEPH ou CanGoBackHome puis validé, les colonnes dans la base de données ne sont pas modifiées.
 
 Il me faut donc modifier quelques points dans mes programmes.
+
+___
 
 # 🧰 Fix
 
@@ -356,6 +364,8 @@ Je l’ai donc ajouté ce matin :
 
 Je peux maintenant `merge` ma branche et tester à nouveau les fonctionnalités sur l’application web.
 
+___
+
 # 🧪 Tests et Vérification
 
 ## ⚙️ Mise en place
@@ -387,6 +397,8 @@ Une fois que c’est fait, je vais sur `DBeaver` et affiche uniquement les colon
 | Etat initial                                                        | Clic sur « Ajouter un module CUSTOM »  | Nouvelle ligne avec colonnes « IsWebEPH » = 0 et « CanGoBackHome » = 1 dans modale et BDD                       | Nouvelle ligne avec colonnes « IsWebEPH » = 0 et « CanGoBackHome » = 1 dans modale et BDD                       | Ok                                                                                                                                              | Les valeurs par défaut sont bien initialisées à la création d’un module CUSTOM.                            |
 | - Nouveau CUSTOM<br>- Colonne « IsWebEPH » = 1<br>- « CanGoBackHome » = 0 | Clic sur coche « IsWebEPH »           | -> Colonne « IsWebEPH » = 0<br>-> Bouton « Continuer » activé<br>-> « CanGoBackHome » = 0                       | -> Colonne « IsWebEPH » = 0<br>-> Bouton « Continuer » activé<br>-> « CanGoBackHome » = 0                       | Ok                                                                                                                                              | Le changement d’état d’une valeur antérieurement modifiée de IsWebEPH pris en compte dans la BDD.          |
 | - Nouveau CUSTOM<br>- « IsWebEPH » = 0<br>- « CanGoBackHome » = 0   | Clic sur coche « CanGoBackHome » puis « IsWebEPH » | -> Colonne « CanGoBackHome » = 1<br>-> Bouton « Continuer » activé<br>-> « IsWebEPH » = 1                       | -> Colonne « CanGoBackHome » = 1<br>-> Bouton « Continuer » activé<br>-> « IsWebEPH » = 1                       | Ok                                                                                                                                              | Les deux coches peuvent activer le bouton « Continuer » et le changement de valeur s’effectue pour plusieurs modifications à la fois            |
+
+___
 
 ## 🎥 Démonstration
 
