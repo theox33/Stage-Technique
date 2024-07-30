@@ -1,5 +1,27 @@
 # 🔗 -> Lien vers [2e ticket - OptionUI Front](https://github.com/theox33/Stage-Technique/tree/main/Ticket-TW-631)
 
+# Table des matières
+
+- [Mission : BACKOFFICE - OptionUI – Rebranding](#mission--backoffice---optionui--rebranding)
+- [Modifications apportées](#modifications-apportées)
+  - [1er fichier : SolutionController.php](#1er-fichier--solutioncontrollerphp)
+  - [2e fichier : show.html.twig](#2e-fichier--showhtmltwig)
+- [Implémentation des coches](#implémentation-des-coches)
+- [Création d’un nouveau module CUSTOM](#création-d’un-nouveau-module-custom)
+- [Vérification](#vérification)
+- [Fix](#fix)
+  - [Fix : wider modal](#fix--wider-modal)
+  - [Fix : enable continue button](#fix--enable-continue-button)
+  - [Fix : update columns](#fix--update-columns)
+  - [Fix : oubli](#fix--oubli)
+- [Tests et Vérification](#tests-et-vérification)
+  - [Mise en place](#mise-en-place)
+  - [Test du Back-Office-Manager](#test-du-back-office-manager)
+- [Démonstration](#démonstration)
+  - [1er test](#1er-test)
+  - [2e test](#2e-test)
+  - [3e test](#3e-test)
+
 ## Mission : [BACKOFFICE] - OptionUI – Rebranding
 
 Description : Dans le cadre du rebranding, il est nécessaire de pouvoir modifier les deux informations CanGoBackHome et IsWebEPH uniquement pour un module custom via le backoffice.
