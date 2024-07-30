@@ -1,4 +1,4 @@
-### [🔙 retour vers le Projet complet](https://github.com/users/theox33/projects/1/views/1)
+### [🔙 retour vers la Roadmap](https://github.com/users/theox33/projects/1/views/1)
 
 # Bienvenue dans mon Répertoire de Stage
 
@@ -16,11 +16,11 @@ Bienvenue dans ce répertoire GitHub dédié à mon stage en entreprise. Ce rép
 
 En raison de la nature de mon travail et des politiques de sécurité de l'entreprise, **je ne peux pas partager les programmes** complets que je développe ou modifie. Cependant, je fournirai des descriptions détaillées et des extraits de code lorsque cela est possible et sûr.
 
-## 📆 La Frise Chronologique
+## 📆 La Roadmap ( = La Frise Chronologique)
 
 La pièce maîtresse de ce répertoire est le [Projet GitHub associé](./projects). J'ai créé une frise chronologique dans ce projet pour détailler les étapes de recherche et de développement de chaque ticket. Chaque étape de la frise chronologique inclut un lien vers le dossier correspondant dans ce répertoire principal.
 
-### 🖱️ Utilisation de la Frise Chronologique
+### 🖱️ Utilisation de la Roadmap
 
 Je recommande aux lecteurs de commencer leur exploration par la `frise chronologique`. Elle offre une **vue d'ensemble des activités** et permet de naviguer facilement entre les différents dossiers et travaux. Vous pouvez ainsi **suivre le déroulement de mes journées** et de mes missions tout au long de ces 4 mois de stage.
 
