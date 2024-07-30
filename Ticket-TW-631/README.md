@@ -2,23 +2,7 @@
 
 # 🎫 Ticket TW-631
 
-## 🎯 Mission : [BACKOFFICE] - OptionUI – Rebranding
-
-Description : Dans le cadre du rebranding, il est nécessaire de pouvoir modifier les deux informations CanGoBackHome et IsWebEPH uniquement pour un module custom via le backoffice.
-
-Il s'agit en réalité de la suite logique du 1er ticket [`TW-611`](https://github.com/users/theox33/projects/1/views/1?pane=issue&itemId=72105190) qui consistait à modifier la partie back avec la base de donnée. Ce ticket-ci est le front où il va falloir implémenter les fonctionnalités graphiques sur le `Back-Office-Manager-V4`.
-
-
-
-**Solution Technique Détaillée :**
-
-- Modification du fichier `src\Controller\EpackManager\SolutionController.php` sur les routes liées aux optionsUI :
-  > Mettre à jour les méthodes et les routes concernées pour inclure les nouvelles options CanGoBackHome et IsWebEPH.
-
-- Mise à jour du front dans `templates\epack_manager\solution\show.html.twig` :
-  > Ajouter les champs pour CanGoBackHome et IsWebEPH dans le template HTML du front, permettant aux utilisateurs de les modifier via l'interface backoffice.
-
-# Table des matières
+## 📑 Table des matières
 ___
 > - ## [🎯 Mission : BACKOFFICE - OptionUI – Rebranding](#-mission--backoffice---optionui--rebranding)
 > 
@@ -55,6 +39,22 @@ ___
 >   - ### [📹 2e test](#-2e-test)
 >   - ### [📹 3e test](#-3e-test)
 ___
+
+## 🎯 Mission : [BACKOFFICE] - OptionUI – Rebranding
+
+Description : Dans le cadre du rebranding, il est nécessaire de pouvoir modifier les deux informations CanGoBackHome et IsWebEPH uniquement pour un module custom via le backoffice.
+
+Il s'agit en réalité de la suite logique du 1er ticket [`TW-611`](https://github.com/users/theox33/projects/1/views/1?pane=issue&itemId=72105190) qui consistait à modifier la partie back avec la base de donnée. Ce ticket-ci est le front où il va falloir implémenter les fonctionnalités graphiques sur le `Back-Office-Manager-V4`.
+
+
+
+**Solution Technique Détaillée :**
+
+- Modification du fichier `src\Controller\EpackManager\SolutionController.php` sur les routes liées aux optionsUI :
+  > Mettre à jour les méthodes et les routes concernées pour inclure les nouvelles options CanGoBackHome et IsWebEPH.
+
+- Mise à jour du front dans `templates\epack_manager\solution\show.html.twig` :
+  > Ajouter les champs pour CanGoBackHome et IsWebEPH dans le template HTML du front, permettant aux utilisateurs de les modifier via l'interface backoffice.
 
 # 🔄 Modifications apportées
 
