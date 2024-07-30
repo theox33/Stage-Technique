@@ -5,6 +5,7 @@
 - [🎯 Mission : BACKOFFICE - OptionUI – Rebranding](#mission--backoffice---optionui--rebranding)
 
 
+
 - [🔄 Modifications apportées](#modifications-apportées)
   - [📁 1er fichier : SolutionController.php](#1er-fichier-)
   - [📁 2e fichier : show.html.twig](#2e-fichier-)
@@ -12,7 +13,9 @@
     - [🆕 Création d’un nouveau module CUSTOM](#création-dun-nouveau-module-custom)
 
 
+
 - [🔍 Vérification](#vérification)
+
 
 
 - [🔧 Fix](#fix)
@@ -22,9 +25,11 @@
   - [🔧 Fix : oubli](#fix--oubli)
 
 
+
 - [🧪 Tests et Vérification](#tests-et-vérification)
   - [⚙️ Mise en place](#mise-en-place)
   - [🖥️ Test du Back-Office-Manager](#test-du-back-office-manager)
+
 
 
 - [🎥 Démonstration](#démonstration)
