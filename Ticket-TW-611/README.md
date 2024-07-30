@@ -8,12 +8,12 @@ ___
 >     - [Rebranding des Options UI pour les Grands Comptes](#mission-1)
 >
 >   - ### Description
->     - [Mise à jour des options UI et ajout de colonnes](#description)
+>     - [Mise à jour des options UI et ajout de colonnes](#description-1)
 > ___
 > - ## 🛠️ Solution Technique Détaillée
 >
 >   - ### Modifications du fichier `optionsUI.xml` (version 4)
->     - [Détails des modifications](#modifications-du-fichier-optionsUI.xml-version-4)
+>     - [Détails des modifications](#modifications-du-fichier-optionsUI.xml-version-4-1)
 >
 >   - ### Modifications côté API (version 4)
 >     - [Ajout des champs dans le modèle de données](#modifications-côté-api-version-4)
