@@ -26,10 +26,14 @@ Je recommande aux lecteurs de commencer leur exploration par la `frise chronolog
 
 ---
 
+
 <div align="center">
   <a href="./projects">
     <img src="https://img.shields.io/badge/Explorez_la_Roadmap-vert?style=for-the-badge" alt="Explorez la Roadmap">
   </a>
 </div>
+
+
+
 
 Merci de votre visite et bonne exploration !
