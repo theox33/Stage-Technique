@@ -27,16 +27,8 @@ Je recommande aux lecteurs de commencer leur exploration par la `frise chronolog
 ---
 
 <div align="center">
-  <a href="./projects" style="
-    display: inline-block;
-    background-color: green;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;">
-    Explorez la Roadmap
+  <a href="./projects">
+    <img src="https://img.shields.io/badge/Explorez_la_Roadmap-vert?style=for-the-badge" alt="Explorez la Roadmap">
   </a>
 </div>
 
