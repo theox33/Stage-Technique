@@ -3,9 +3,9 @@
 
 # Table des matières
 ___
-> - ## 🎯 Objectif
+> - ## [🎯 Objectif](#-objectif-1)
 >   - ### Mission
->     - [Rebranding des Options UI pour les Grands Comptes](#-objectif)
+>     - [Rebranding des Options UI pour les Grands Comptes](#mission-1)
 >
 >   - ### Description
 >     - [Mise à jour des options UI et ajout de colonnes](#description)
