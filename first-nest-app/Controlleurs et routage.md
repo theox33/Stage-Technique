@@ -1,13 +1,13 @@
 ### [🔙 Retour au projet](https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/HOME.md)
 
-## Table des matières
+# 🔧 Controlleurs et routage
 
-| <div align="left"><h1>🔧 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md">Controlleurs et routage</a></h1><ul><li><h2> <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#contr&ocirclleurs">:joystick: Controlleurs</a></h2></li><ul><li><h3>📥📤 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#requ%C3%AAtes-get-et-post">Requêtes `@Get` et `@Post`</a></h3></li></ul><li><h2>:compass: <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#routage">Routage</a></h2></li> |
+## 📑 Table des matières
+
+| <div align="left"><h2> <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#contr&ocirclleurs">:joystick: Controlleurs</a></h2><ul><li><h3>📥📤 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#requ%C3%AAtes-get-et-post">Requêtes `@Get` et `@Post`</a></h3></li></ul><h2>:compass: <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#routage">Routage</a></h2> |
 |---|
 
-# Controlleurs et routage
-
-## Controlleurs
+## 🕹️ Controlleurs
 
 Les controlleurs sont des modules ou des cmposants chargés de traiter et de répondre aux demandes entrantes des utilisateurs, tels les naviguateurs web ou les consommateurs d'API. Ils sont chargés de traiter les données, de les envoyer à la base de données, de les récupérer et de les renvoyer à l'utilisateur.
 
@@ -15,7 +15,7 @@ Dans le projet que j’ai créé avec NestJS, je possède un controlleur par dé
 
 Un contrôleur dans NestJS est responsable de la gestion des requêtes HTTP entrantes, de leur traitement et de la fourniture d'une réponse appropriée. Les contrôleurs encapsulent la logique pour des routes ou des points d'accès spécifiques de l’application. Ils sont généralement responsables de la validation des données d'entrée, de l'invocation de services ou de la logique métier, et du retour des réponses. Dans NestJS, les contrôleurs sont décorés avec le décorateur @Controller(), et on peut définir les gestionnaires de routes sous forme de méthodes au sein de la classe du contrôleur.
 
-### Requêtes `@Get` et `@Post`
+### 📥📤 Requêtes `@Get` et `@Post`
 
 Je créé une nouvelle requête d’entrée `@Get` que je mets sur un point d’entrée différent que la racine : `@Get(‘/askquestion’)`. La requête sera donc accessible vers le lien : `localhost:3000/askquestion`.
 Je définie la méthode `askQuestion` qui retourne `’What is your name ?’`.
