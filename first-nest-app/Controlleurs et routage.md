@@ -4,7 +4,7 @@
 
 ## 📑 Table des matières
 
-| <div align="left"><h2> <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#contr&ocirclleurs">:joystick: Controlleurs</a></h2><ul><li><h3>📥📤 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#requ%C3%AAtes-get-et-post">Requêtes `@Get` et `@Post`</a></h3></li></ul><h2>:compass: <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#-routes">Routes</a></h2><ul><li><h3>🔰 <a href=" |
+| <div align="left"><h2> <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#contr&ocirclleurs">:joystick: Controlleurs</a></h2><ul><li><h3>📥📤 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#requ%C3%AAtes-get-et-post">Requêtes `@Get` et `@Post`</a></h3></li></ul><h2>:compass: <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#-routes">Routes</a></h2><ul><li><h3>🔰 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#-prise-en-main">Prise en main</a></h3></li><li><h3>⚠️ <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#%EF%B8%8F-probl%C3%A8me-rencontr%C3%A9">Problème rencontré</a></h3></li></ul><h2>🔗 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#-cha%C3%AEnes-de-requ%C3%AAte-query-strings">Chaîne de requête *(Query Strings)*</a></h2><ul><li><h3>🔰 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#-prise-en-main-1">Prise en main</a></h3></ul></li> |
 |---|
 
 ## 🕹️ Controlleurs
@@ -87,6 +87,8 @@ Comme on souhaite obtenir une réponse, je vais envoyer une requête en `JSON` o
 On obtient bien la réponse :
 
 ![image](https://github.com/user-attachments/assets/594d6505-4fa8-40ab-b6ca-f2dce0cde2bb)
+
+___
 
 ## 🧭 Routes
 
@@ -193,6 +195,8 @@ export class AppController {
 En faisant à nouveau la requête, j’obtiens à nouveau le résultat attendu pour `GET [http://localhost:3000/askquestion`](http://localhost:3000/askquestion%60) :
 
 ![Image](https://github.com/user-attachments/assets/f092f2f8-12f8-4b08-8063-4a2ae4402043)
+
+___
 
 ## 🔗 Chaînes de requête (Query Strings)
 
