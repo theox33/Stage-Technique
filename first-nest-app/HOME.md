@@ -13,21 +13,6 @@ C'est `Thomas`, un collègue en alternance qui m'a conseillé `NestJS` car c'est
 Comme elle est inconnue des développeurs travaillant ici, si je maîtrise ce service, je pourrai apporter mes connaissances de NestJS pour potentiellement améliorer la structure actuelle de l'application `ePack-Higiène` ou ajouter de nouvelles fonctionnalités, ou encore grandement simplifier des programmes existants.
 
 ## Table des matières
-> ___
-> ## [🌟 Initiation à NestJS](https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md)
-> - ### [🔧 Installation de l'environnement de développement](https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#installation-de-lenvironnement-de-d%C3%A9veloppement)
-> - ### [📂 Analyse des fichiers générés](https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#analyse-des-fichiers-g%C3%A9n%C3%A9r%C3%A9s)
->   - #### [📁 /src/](https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#src)
->   - #### [🧪 /test/](https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#test)
-> - ### [🚀 Première exécution du projet](https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#premi%C3%A8re-ex%C3%A9cution-du-projet)
-> ___
-> ## [🔧 Controlleurs et routage](https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md)
-> - ### [:joystick: Controlleurs](https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#contr&ocirclleurs)
->     - #### [📥📤 Requêtes `@Get`et `@Post`](https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#requ%C3%AAtes-get-et-post)
-> - ### [:compass: Routes](https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#routes)
-> ___
-
-## Table des matières
 
 | <div align="left"><h2>🌟 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md">Initiation à NestJS</a></h2><ul><li><h3>🔧 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#installation-de-lenvironnement-de-d%C3%A9veloppement">Installation de l'environnement de développement</a></h3></li><li><h3>📂 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#analyse-des-fichiers-g%C3%A9n%C3%A9r%C3%A9s">Analyse des fichiers générés</a></h3><ul><li><h4>📁 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#src">/src/</a></h4></li><li><h4>🧪 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#test">/test/</a></h4></li></ul></li><li><h3>🚀 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#premi%C3%A8re-ex%C3%A9cution-du-projet">Première exécution du projet</a></h3></li></ul></div> |
 |-----------------------------------------|
