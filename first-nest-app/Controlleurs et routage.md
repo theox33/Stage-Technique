@@ -4,7 +4,7 @@
 
 ## 📑 Table des matières
 
-| <div align="left"><h2> <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#contr&ocirclleurs">:joystick: Controlleurs</a></h2><ul><li><h3>📥📤 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#requ%C3%AAtes-get-et-post">Requêtes `@Get` et `@Post`</a></h3></li></ul><h2>:compass: <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#-routage">Routage</a></h2> |
+| <div align="left"><h2> <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#contr&ocirclleurs">:joystick: Controlleurs</a></h2><ul><li><h3>📥📤 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#requ%C3%AAtes-get-et-post">Requêtes `@Get` et `@Post`</a></h3></li></ul><h2>:compass: <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md#-routes">Routes</a></h2><ul><li><h3>🔰 <a href=" |
 |---|
 
 ## 🕹️ Controlleurs
@@ -88,4 +88,170 @@ On obtient bien la réponse :
 
 ![image](https://github.com/user-attachments/assets/594d6505-4fa8-40ab-b6ca-f2dce0cde2bb)
 
-## 🧭 Routage
+## 🧭 Routes
+
+Les routes permettent d'extraire les valeurs depuis l'URL d'une requête web, ce qui est essentiel pour les applications web dynamiques.
+
+Par exemple, la route `'/users/:userId'` définit un paramètre nommé `userId`. Ce paramètre peut être extrait et utilisé dans le code lorsque cela est nécessaire.
+
+Les routes permettent de créer des URL dynamiques et paramétrées, facilitant la gestion des ressources au sein des applications web.
+
+### 🔰 Prise en main
+Revenons aux API que j’ai créées hier : `'/askquestion'` et `'/answer'` dans `src/app.controller.ts`.
+
+Voyons ce qui se passe lorsque j’ajoute un paramètre de route. Supposons que je passe un `id` dans l'URL et que je souhaite l'afficher dans le corps de la page HTML en retour.
+
+Pour accéder à ce paramètre, je dois utiliser le décorateur `@Param('id')` dans la méthode `getRouteParam`, et j’ajoute une variable `userId` (le nom est arbitraire) qui recevra la valeur de `id`.
+
+Puisque je souhaite afficher cette valeur dans le corps de notre page web, je retourne cette variable.
+
+``` typescript
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { AppService } from './app.service';
+import { AnswerDto } from './dto/app.dto';
+
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  @Get()
+  getHello(): string {
+    return this.appService.getHello();
+  }
+
+  @Get(':id')
+  getRouteParam(@Param('id') userId: string) {
+    return `${userId}`
+  }
+
+  @Get('/askquestion')
+  askQuestion() {
+    return 'What is your name?'
+  }
+
+  @Post('/answer')
+  answer(@Body() getAnswerDto: AnswerDto) {
+    return getAnswerDto.answer
+  }
+}
+
+```
+
+Maintenant, je démarre mon application web avec `npm run start :dev` et je me rends dans ma `console réseau`.
+
+Je lance une requête `GET http://localhost:3000/test-de-valeur` et normalement, je devrais retrouver `test-de-valeur` dans le corps de ma page web :
+
+![Image](https://github.com/user-attachments/assets/0c3ac14d-0f65-4329-b380-0745cc8b7788)
+![Image](https://github.com/user-attachments/assets/91341dcf-2c85-4cf8-8d22-eab4ff57e2a6)
+
+### ⚠️ Problème rencontré
+
+Si je lance une requête `@Get` vers `http://localhost :3000/askquestion`, je devrais normalement recevoir le même résultat que la dernière fois, à savoir : `’What is your name ?’`.
+
+Cependant, j’obtiens `askquestion` en réponse :
+
+![Image](https://github.com/user-attachments/assets/6df7cdce-ea02-441b-98e6-ee5a758b8fbe)
+
+C’est parce que le code s’exécute de haut en bas et donc, avant exécuter `@Get(‘/askquestion’)`, il exécute `@Get(‘ :id’)`.
+
+Cela signifie que l’application web traite `askquestion` en tant que l’`id` de la requête `@Get(‘ :id’)`.
+
+Pour régler ce problème, il suffit juste de déplacer la requête `@Get(‘ :id’)` après `@Get(‘/askquestion’)` :
+
+``` typescript
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { AppService } from './app.service';
+import { AnswerDto } from './dto/app.dto';
+
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  @Get()
+  getHello(): string {
+    return this.appService.getHello();
+  }
+
+  @Get('/askquestion')
+  askQuestion() {
+    return 'What is your name?'
+  }
+
+  @Post('/answer')
+  answer(@Body() getAnswerDto: AnswerDto) {
+    return getAnswerDto.answer
+  }
+
+  @Get(':id')
+  getRouteParam(@Param('id') userId: string) {
+    return `${userId}`
+  }
+}
+
+```
+
+En faisant à nouveau la requête, j’obtiens à nouveau le résultat attendu pour `GET [http://localhost:3000/askquestion`](http://localhost:3000/askquestion%60) :
+
+![Image](https://github.com/user-attachments/assets/f092f2f8-12f8-4b08-8063-4a2ae4402043)
+
+## 🔗 Chaînes de requête (Query Strings)
+
+Une chaîne de requête est une partie de l'URL utilisée pour passer des données ou des paramètres à un serveur web. Elle commence par un `?` et utilise `&` pour séparer les différentes paires clé-valeur.
+
+Par exemple : `'?name=Theo&age=22'`. Ici, le nom est `Theo` et l'âge est `22`. Ces valeurs sont transmises via la chaîne de requête.
+
+Les chaînes de requête sont souvent utilisées dans les applications web pour envoyer des données lors de requêtes `GET`.
+
+### 🔰 Prise en main
+
+Comme je l’ai décrit dans mon petit exemple au-dessus, je vais renvoyer sur ma page web deux variables : `username` et `age` dans la réponse à une requête avec une chaîne de requête *(Query String)*.
+
+Je créé donc ma requête :
+
+``` typescript
+import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
+import { AppService } from './app.service';
+import { AnswerDto } from './dto/app.dto';
+
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  /*
+  @Get()
+  getHello(): string {
+    return this.appService.getHello();
+  }
+  */
+
+  @Get()
+  getQueryStrings(
+    @Query('name') username,
+    @Query('age') age,
+    ): string {
+    return `${username}, ${age}`;
+  }
+
+  @Get('/askquestion')
+  askQuestion() {
+    return 'What is your name?'
+  }
+
+  @Post('/answer')
+  answer(@Body() getAnswerDto: AnswerDto) {
+    return getAnswerDto.answer
+  }
+
+  @Get(':id')
+  getRouteParam(@Param('id') userId: string) {
+    return `${userId}`
+  }
+}
+
+```
+
+Je teste dans ma `console réseau` ma requête `QueryString` avec `http://localhost :3000 ?name=Theo&age=22`:
+
+![Image](https://github.com/user-attachments/assets/4503801a-ec8f-4333-bcfd-e3c485154fc3)
+
+J’accède bien aux bonnes valeurs.
