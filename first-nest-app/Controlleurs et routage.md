@@ -192,7 +192,7 @@ export class AppController {
 
 ```
 
-En faisant à nouveau la requête, j’obtiens à nouveau le résultat attendu pour `GET [http://localhost:3000/askquestion`](http://localhost:3000/askquestion%60) :
+En faisant à nouveau la requête, j’obtiens à nouveau le résultat attendu pour `GET http://localhost:3000/askquestion` :
 
 ![Image](https://github.com/user-attachments/assets/f092f2f8-12f8-4b08-8063-4a2ae4402043)
 
