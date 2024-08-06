@@ -6,15 +6,15 @@ En ce moment, il est question de se renseigner sur NestJS. Personne n’est sur 
 
 ## Table des matières
 
-| <div align="left"><h2>🌟 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md">Initiation à NestJS</a></h2><ul><li><h3>🔧 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#installation-de-lenvironnement-de-d%C3%A9veloppement">Installation de l'environnement de développement</a></h3></li><li><h3>📂 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#analyse-des-fichiers-g%C3%A9n%C3%A9r%C3%A9s">Analyse des fichiers générés</a></h3><ul><li><h4>📁 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#src">/src/</a></h4></li><li><h4>🧪 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#test">/test/</a></h4></li></ul></li><li><h3>🚀 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#premi%C3%A8re-ex%C3%A9cution-du-projet">Première exécution du projet</a></h3></li></ul></div> |
+| <div align="left"><h2>🌟 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md">Introduction de NestJS</a></h2><ul><li><h3>🔧 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#installation-de-lenvironnement-de-d%C3%A9veloppement">Installation de l'environnement de développement</a></h3></li><li><h3>📂 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#analyse-des-fichiers-g%C3%A9n%C3%A9r%C3%A9s">Analyse des fichiers générés</a></h3><ul><li><h4>📁 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#src">/src/</a></h4></li><li><h4>🧪 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#test">/test/</a></h4></li></ul></li><li><h3>🚀 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#premi%C3%A8re-ex%C3%A9cution-du-projet">Première exécution du projet</a></h3></li></ul></div> |
 |-----------------------------------------|
 | <div align="right"><h4>🔜 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md">Suivant *(Controlleurs et routage)*</a></h4></div> |
 
-## Introduction de NestJS
+## 🌟 Introduction de NestJS
 
 `NestJS` est un framework moderne, performant et extensible pour `Node.js`, conçu pour **construire des applications côté serveur évolutives et maintenables**. Il est conçu pour fournir une base architecturale solide en utilisant `TypeScript` et en adoptant des modèles architecturaux tels que _l'injection de dépendances_, _les modules_ et les _décorateurs_. NestJS est réputé pour son support de la construction d'API RESTful, d'API GraphQL et d'applications basées sur WebSocket. Il offre une variété de fonctionnalités et d'outils pour **rationaliser le processus de développement** et **garantir la maintenabilité du code.**
 
-## Installation de l’environnement de développement
+## 🔧 Installation de l’environnement de développement
 
 Pour commencer à développer avec `NestJS`, j'ai d'abord configuré mon environnement de développement. Voici les étapes que j'ai suivies :
 
@@ -77,7 +77,7 @@ Le projet s’est bien installé, tous les fichiers ont été générés :
 
 ![Image](https://github.com/user-attachments/assets/8622be9b-1d9d-49f8-b447-02f7230fe8d2)
 
-## Analyse des fichiers générés
+## 📂 Analyse des fichiers générés
 
 `NestJS` suit une structure de projet bien définie qui aide à organiser le code et à maintenir la maintenabilité. Voici les composants clés de la structure typique d'un projet `NestJS` que j'ai explorés :
 
@@ -91,7 +91,7 @@ Le projet s’est bien installé, tous les fichiers ont été générés :
 •	`public/` : Ce répertoire est utilisé pour servir des fichiers statiques.
 •	`test/` : Fichiers de test et configurations pour tester l'application.
 
-### /src/
+### 📁 /src/
 
 Dans le dossier `/src`, plusieurs fichiers .ts (TypeScript) ont été générés. Etant très similaire à javascript, il n’est pas compliqué de s’adapter.
 
@@ -183,7 +183,7 @@ describe('AppController', () => {
 
 À en juger par son apparence et le nom des méthodes, il s’agit très probablement d’un fichier de test pour le service `controller` par son nom.
 
-### /test/
+### 🧪 /test/
 
 Le dossier `test` possède des tests d’API pour notre racine.
 
@@ -195,7 +195,7 @@ Le `package-lock.json` contient toutes les informations relatives aux modules no
 
 Le `package.json` résume le projet avec les dépendances utilisées et les scripts utilisés. Cela sera utile pour lancer des commandes spécifiques, notamment le script `start:dev` permettant d’exécuter l’application en mode développement.
 
-## Première exécution du projet
+## 🚀 Première exécution du projet
 
 Je lance la commande `npm run start :dev` et vais sur mon navigateur internet sur le port 3000 : `localhost :3000`.
 ```
