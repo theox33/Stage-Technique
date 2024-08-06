@@ -9,7 +9,7 @@
 |<div align="left"><h2>📖 <a href="https://
 
 
-## Définition
+## 📖 Définition
 Les requêtes et les réponses sont des objets utilisés pour interagir avec les données de requêtes entrantes et préparer les données de réponse que l’application NestJS renvoie au client.
 Tout simplement : 
 ``` mermaid
@@ -18,7 +18,7 @@ flowchart LR
     Serveur-- Réponse -->Client
 ```
 
-## Implémentation et usage
+## 🛠️ Implémentation et usage
 
 Voyons comment je peux gérer les requêtes et les réponses dans le contrôleur actuel :
 
@@ -77,9 +77,9 @@ Dans la plupart des cas, cela nous permet d’obtenir des paramètres de `QueryS
 On pourrait également utiliser les requêtes pour réaliser un système d’authentification. Car le paramètre `req` peut nous donner accès à la requête complète envoyée au serveur par le client.
 La réponse peut nous permettre de contrôler plus habilement les données que l’on souhaite retourner au client.
 
-## Tests
+## 🧪 Tests
 
-### Test de requêtes
+### 📤 Test de requêtes
 
 Afin de voir comment se comportent les requêtes et les réponses, je vais observer la valeur du paramètre `req` avec un `console.log(req.headers)` .
 Voici ce que j’obtiens dans la console :
@@ -106,7 +106,7 @@ Voici ce que j’obtiens dans la console :
 
 J’ai donc accès aux données de mon utilisateur.
 
-### Test de réponses
+### 📥 Test de réponses
 
 Au lieu de retourner directement `’Hello World !’`, je souhaite le retourner en tant que réponse.
 
@@ -129,7 +129,7 @@ Ainsi, en allant sur ma page web, je reçois bien :
 
 On pourrait bien sur aller plus loin dans la démarche, cela pourrait être utile pour les API.
 
-## Exemple avec une API
+## 🔌 Exemple avec une API
 
 Comme vu tout à l’heure avec la méthode `getHello()`, on pourrait utiliser les réponses d’une manière similaire pour une API où on souhaiterai envoyer la réponse sous quelques conditions.
 
