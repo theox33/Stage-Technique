@@ -20,6 +20,9 @@ flowchart LR
     Serveur-- Réponse -->Client
 ```
 
+Les **contrôleurs** dans **NestJS** sont responsables de la gestion des requêtes HTTP entrantes et de la génération de réponses appropriées. On définit des méthodes au sein des contrôleurs pour gérer des routes spécifiques, et ces méthodes prennent en charge les requêtes HTTP et renvoient des réponses HTTP. Au sein de ces méthodes, on peut accéder aux données de la requête, telles que les paramètres de route et les chaînes de requête, en utilisant des décorateurs comme `@Param()` et `@Query()`. On peut également utiliser les décorateurs `@Req()` et `@Res()` pour accéder directement aux objets de requête et de réponse d'**Express.js** *(Etude détaillée d'Express.js peut-être plus tard...)*, si nécessaire. Pour envoyer des réponses, on retourne généralement des données à partir de nos méthodes de gestion des routes, et NestJS se charge de les sérialiser dans le format de réponse approprié (par exemple, JSON).
+
+
 ## 🛠️ Implémentation et usage
 
 Voyons comment je peux gérer les requêtes et les réponses dans le contrôleur actuel :
