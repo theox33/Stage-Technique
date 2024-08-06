@@ -1,6 +1,6 @@
 ### [🔙 Retour au projet](https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/HOME.md)
 
-# Initiation à NestJS
+# 📖 Initiation à NestJS
 J’ai décidé sous les conseils d’un collègue alternant de continuer à faire des POC personnels – de me former en ligne.
 En ce moment, il est question de se renseigner sur NestJS. Personne n’est sur le coup, donc je me lance.
 
