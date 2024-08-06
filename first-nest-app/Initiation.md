@@ -4,7 +4,7 @@
 J’ai décidé sous les conseils d’un collègue alternant de continuer à faire des POC personnels – de me former en ligne.
 En ce moment, il est question de se renseigner sur NestJS. Personne n’est sur le coup, donc je me lance.
 
-## Table des matières
+## 📑 Table des matières
 
 | <div align="left"><h2>🌟 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md">Introduction de NestJS</a></h2><ul><li><h3>🔧 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#installation-de-lenvironnement-de-d%C3%A9veloppement">Installation de l'environnement de développement</a></h3></li><li><h3>📂 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#analyse-des-fichiers-g%C3%A9n%C3%A9r%C3%A9s">Analyse des fichiers générés</a></h3><ul><li><h4>📁 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#src">/src/</a></h4></li><li><h4>🧪 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#test">/test/</a></h4></li></ul></li><li><h3>🚀 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Initiation.md#premi%C3%A8re-ex%C3%A9cution-du-projet">Première exécution du projet</a></h3></li></ul></div> |
 |-----------------------------------------|
