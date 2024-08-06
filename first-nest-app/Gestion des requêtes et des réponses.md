@@ -6,7 +6,9 @@
 
 |<div align="left"><h4>🔙 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Controlleurs%20et%20routage.md">Précédant *(Controlleurs et routage)*</a></h4></div>|
 |---|
-|<div align="left"><h2>📖 <a href="https://
+|<div align="left"><h2>📖 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Gestion%20des%20requ%C3%AAtes%20et%20des%20r%C3%A9ponses.md#-d%C3%A9finition">Définition</a></h2><h2>🛠️ <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Gestion%20des%20requ%C3%AAtes%20et%20des%20r%C3%A9ponses.md#%EF%B8%8F-impl%C3%A9mentation-et-usage">Implémentation et usage</a></h2><h2>🧪 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Gestion%20des%20requ%C3%AAtes%20et%20des%20r%C3%A9ponses.md#-tests">Tests</a></h2><ul><li><h3>📤 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Gestion%20des%20requ%C3%AAtes%20et%20des%20r%C3%A9ponses.md#-test-de-requ%C3%AAtes">Test de requêtes</a></h3></li><li><h3>📥 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Gestion%20des%20requ%C3%AAtes%20et%20des%20r%C3%A9ponses.md#-test-de-r%C3%A9ponses">Test de réponses</a></h3></li></ul><h2>🔌 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Gestion%20des%20requ%C3%AAtes%20et%20des%20r%C3%A9ponses.md#-exemple-avec-une-api">Exemple avec une API</a></h2>|
+|<div align="right"><h4>🔜 <a href="">Suivant </a></h4></div>
+
 
 
 ## 📖 Définition
