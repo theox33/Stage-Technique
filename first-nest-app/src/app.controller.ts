@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query, Req, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { AnswerDto } from './dto/app.dto';
 
@@ -6,13 +6,16 @@ import { AnswerDto } from './dto/app.dto';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  /*
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getHello(@Req() req, @Res() res) {
+    console.log(res.headers);
+    // return this.appService.getHello();
+    res.status(200).json({
+      res: this.appService.getHello()
+    })
   }
-  */
 
+  /*
   @Get()
   getQueryStrings(
     @Query('name') username,
@@ -20,6 +23,7 @@ export class AppController {
     ): string {
     return `${username}, ${age}`;
   }
+  */
 
   @Get('/askquestion')
   askQuestion() {
@@ -27,8 +31,21 @@ export class AppController {
   }
 
   @Post('/answer')
-  answer(@Body() getAnswerDto: AnswerDto) {
-    return getAnswerDto.answer
+  answer(@Body() getAnswerDto: AnswerDto,
+    @Req() req,
+    @Res() res) {
+      let response;
+      let status;
+      if (getAnswerDto.answer === 'yes') {
+        response = 'It is yes',
+        status = 200
+      } else {
+        response = 'It is no',
+        status = 400
+      }
+    res.status(status).json({
+      res: response
+    })
   }
 
   @Get(':id')
