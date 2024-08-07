@@ -188,7 +188,118 @@ Et surtout, le programme `/src/app.controller.ts` :
 > Initialement j’essayais de faire des `parseInt()` dans le programme `/src/sum-service/sum-service.service.ts` mais j’ai vite remarqué que le problème devait pour une raison ou une autre être adressé avant l’appel au service : pendant l’acquisition des valeurs dans le programme `/src/app.controller.ts` avec la méthode `Number` qui est plus efficace que `parseInt()`.
 ---
 
+
+
 Maintenant, j’obtiens bien le bon résultat :
 
 ![image](https://github.com/user-attachments/assets/a2ad3aab-8f84-4320-843f-0eabf985c2d8)
 ![image](https://github.com/user-attachments/assets/7607188c-c914-486a-b014-0eada8b24c06)
+
+---
+
+# 🔌 Utilisation des providers
+
+## 📖  Définition de `provider`
+
+Dans **NestJS**, les services sont considérés comme des **fournisseurs** *(providers)*. Un fournisseur est une classe ou une valeur que **NestJS** peut injecter dans d'autres composants, tels que les contrôleurs ou d'autres services, en utilisant l'injection de dépendances.
+
+Les fournisseurs peuvent être des singletons *( = un patron de conception dont l'objet est de restreindre l'instanciation d'une classe à un seul objet (ou bien à quelques objets seulement). Il est utilisé lorsque l'on a besoin d'exactement un objet pour coordonner des opérations dans un système.)* ou être limités à un module spécifique, selon la manière dont ils sont configurés.
+
+Pour faire d'une classe un fournisseur, on la décore avec le décorateur `@Injectable()`. Une fois qu'une classe est marquée comme fournisseur, elle peut être injectée dans d'autres composants en spécifiant son type dans le constructeur du composant qui en a besoin. Le système d'injection de dépendances de **NestJS** se charge de créer et de gérer les instances des fournisseurs.
+
+---
+
+C’est là que se pose une problématique : tout à l’heure, j’ai implémenté un nouveau service défini dans `/src/sum-service/sum-service.service.ts`. Dans ce programme, j’ai identifié le service par le décorateur `@Injectable` et ai dit que cela servait à identifier les services. Or, ici je dis également que ce dernier sert à identifier les providers *(fournisseurs)*.
+
+En réalité, les **services** sont un cas de **providers**.
+
+Comme je l’ai expliqué dans la section *Définition*, les `providers` sont utilisés pour l’injection de dépendances. Mais en quoi cela consiste-t-il ?
+
+>J’ai pu comprendre cela grâce à un commentaire sur StackOverflow avec une métaphore : 
+>
+>Imaginons que je souhaite manger une pizza. J’ai 2 options :
+> - Je peux la cuisiner moi-même
+> - Je peux la commander à un magasin
+>
+>Donc les `providers` m’apportent la dépendance ; Dans notre cas : les `providers` me fournissent >la pizza.
+
+D’une manière similaire, j’ai créé le service `SumServiceService` et ensuite, je dis que ce service est un provider et qu’on peut l’injecter :
+``` typescript
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class SumServiceService {
+    getSum(nb1: number, nb2: number): number {
+        return nb1 + nb2;
+    }
+}
+
+```
+
+Mais en quoi consiste l’injection également ?
+
+## 💉 L’injection
+
+En reprenant comme base la portion de code ci-dessus ; Si je me rends dans le **module** `/src/app.module.ts`, on peut voir que sous l’indicateur `@Module`, sont présents les `contrôleurs` et les `providers` :
+``` typescript
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { SumServiceService } from './sum-service/sum-service.service';
+
+@Module({
+  imports: [],
+  controllers: [AppController],
+  providers: [AppService, SumServiceService],
+})
+export class AppModule {}
+
+```
+
+Les deux `providers` : *AppService* et *SumServiceService* sont ceux utilisés dans le contrôleur `AppController`.
+
+### ❓ Questionnement
+
+Quand j’ai voulu prendre en main les services avec le contrôleur, les importations et exportations se faisaient dans les deux programmes : `/src/app.controller.ts` et `/src/sum-service/sum-service.service.ts`.
+
+On peut donc se demander à quoi cela peut bien servir de déclarer le(s) contrôleur(s) et provider(s) dans le programme `/src/app.module.ts` alors que celui-ci n’est pas réellement utilisé dans ce cas précis.
+
+J’ai donc décidé de supprimer le provider `SumServiceService` du programme `/src/app.module.ts` et voir comment l’application web se porte :
+``` typescript
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+//import { SumServiceService } from './sum-service/sum-service.service';
+
+@Module({
+  imports: [],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+
+J’obtiens un message d’erreur dans mon terminal après avoir relancé NestJS :
+``` typescript
+[Nest] 86592  - 07/08/2024 16:24:43   ERROR [ExceptionHandler] Nest can't resolve dependencies of the AppController (AppService, ?). Please make sure that the argument SumServiceService at index [1] is available in the AppModule context.
+
+Potential solutions:
+- Is AppModule a valid NestJS module?
+- If SumServiceService is a provider, is it part of the current AppModule?
+- If SumServiceService is exported from a separate @Module, is that module imported within AppModule?
+  @Module({
+    imports: [ /* the Module containing SumServiceService */ ]
+  })
+```
+
+L’erreur dit que `SumServiceService` devrait être disponible, mais pourquoi ?
+Elle propose aussi plusieurs solutions :
+-	Ce n’est pas un module valide *(Mais ce n’est pas notre cas, il est bien valide)*
+-	S’il est un provider, il devrait faire partie de `AppModule`
+
+Donc concrètement, à chaque fois que je souhaite créer un provider, ou un service *(puisqu’ils sont par défauts eux-mêmes des providers)* et que je l’utilise dans un contrôleur, alors il devrait faire partie du module auquel ce contrôleur est attaché.
+
+Tout cela appartient au même module.
+
+Je verrais ensuite en quoi consiste un module car l’explication n’est pas satisfaisante *pour le moment*.
+
+
