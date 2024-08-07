@@ -6,8 +6,10 @@
 
 |<div align="left"><h4>🔙 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Gestion%20des%20requ%C3%AAtes%20et%20des%20r%C3%A9ponses.md">Pécédant *(Gestion des requêtes et des réponses)*</a></h3></div>|
 |---|
-|<div align="left"></div>|
-|<div align="right"><h4>🔜 <a href="">Suivant</a></h4></div>|
+|<div align="left"><h2>🛠️ <a href="">Création de services</a></h2><ul><li><h3>📖 <a href="">Définition</a></h3></li><li><h3>🏗️ <a href="">Structure du service</a></h3></li><li><h3>🚀 <a href="">Mise en application</a></h3></li><ul><li><h4>🆕 <a href="">Création d'un nouveau service</a></h4></li><ul><li><h5>⚠️ <a href="">Souci technique</a></h5></li><li><h5>📝 <a href="">Définition du service</a></h5></li></ul><li><h4>🧪 <a href="">Test du service</a></h4></li></ul></ul></div>|
+|<div align="left"><h2>🔌 <a href="">Utilisation des providers</a></h2><ul><li><h3>📖 <a href="">Définition de `provider`</a></h3></li><li><h3>💉 <a href="">L'injection</a></h3></li><ul><li><h4>❓ <a href="">Questionnement</a></h4></li></ul></ul></div>|
+|<div align="left"><h2>🗂️ <a href="">Modules et portées des services</a></h2></div>|
+|<div align="right"><h4>🔜 <a href="">Suivant</a></h4>|
 
 # 🛠️ Création de services
 ## 📖 Définition
@@ -302,4 +304,6 @@ Tout cela appartient au même module.
 
 Je verrais ensuite en quoi consiste un module car l’explication n’est pas satisfaisante *pour le moment*.
 
+---
 
+# 🗂️ Modules et portées des services
