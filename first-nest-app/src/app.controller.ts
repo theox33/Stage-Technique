@@ -1,10 +1,14 @@
 import { Controller, Get, Post, Body, Param, Query, Req, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { AnswerDto } from './dto/app.dto';
+import { SumServiceService } from './sum-service/sum-service.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly appService: AppService,
+    private readonly sumService: SumServiceService,
+  ) {}
 
   @Get()
   getHello(@Req() req, @Res() res) {
@@ -14,6 +18,14 @@ export class AppController {
       res: this.appService.getHello()
     })
   }
+
+  @Get('sum')
+  getSum(@Query('num1') a: string, @Query('num2') b: string): number | string {
+    const nb1 = Number(a);
+    const nb2 = Number(b);  
+    return this.sumService.getSum(nb1, nb2);
+  }
+  
 
   /*
   @Get()
