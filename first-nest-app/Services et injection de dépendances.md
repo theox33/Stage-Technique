@@ -8,7 +8,7 @@
 |---|
 |<div align="left"><h2>🛠️ <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#%EF%B8%8F-cr%C3%A9ation-de-services-1">Création de services</a></h2><ul><li><h3>📖 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#-d%C3%A9finition-1">Définition</a></h3></li><li><h3>🏗️ <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#%EF%B8%8F-structure-du-service-1">Structure du service</a></h3></li><li><h3>🚀 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#-mise-en-application-1">Mise en application</a></h3></li><ul><li><h4>🆕 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#-cr%C3%A9ation-dun-nouveau-service-1">Création d'un nouveau service</a></h4></li><ul><li><h5>⚠️ <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#%EF%B8%8F-souci-technique-1">Souci technique</a></h5></li><li><h5>📝 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#-d%C3%A9finition-du-service-1">Définition du service</a></h5></li></ul><li><h4>🧪 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#-test-du-service-1">Test du service</a></h4></li></ul></ul></div>|
 |<div align="left"><h2>🔌 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#-utilisation-des-providers-1">Utilisation des providers</a></h2><ul><li><h3>📖 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#--d%C3%A9finition-de-provider">Définition de `provider`</a></h3></li><li><h3>💉 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#-linjection-1">L'injection</a></h3></li><ul><li><h4>❓ <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#-questionnement-1">Questionnement</a></h4></li></ul></ul></div>|
-|<div align="left"><h2>🗂️ <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#%EF%B8%8F-modules-et-port%C3%A9es-des-services-1">Modules et portées des services</a></h2></div>|
+|<div align="left"><h2>🗂️ <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md#%EF%B8%8F-modules-et-port%C3%A9es-des-services-1">Modules et portées des services</a></h2><ul><li><h3>📖 <a href="">Définition des modules</a></h3></li><li><h3>🏗️ <a href="">Création de nouvelles entités</a></h3></li><ul><li><h4>🆕 <a href="">Création d'un module</a></h4></li><li><h4>🕹️ <a href="">Création d'un contrôleur</a></h4></li><li><h4>🔧 <a href="">Création d'un service</a></h4></li><li><h4>📄 <a href="">Création d'un DTO</a></h4></li></ul><li><h3>💻 <a href="">Programmation des entités</a></h3></li><ul><li><h4>🕹️ <a href="">Le contrôleur</a></h4></li></ul><li><h3>🧪 <a href="">Test</a></h3></li><ul><li><h4>🚫 <a href="">Sans service</a></h4></li><li><h4>🔄 <a href="">Modifications avec service</a></h4></li></ul></ul></div>|
 |<div align="right"><h4>🔜 <a href="https://github.com/theox33/Stage-Technique/blob/main/first-nest-app/Services%20et%20injection%20de%20d%C3%A9pendances.md">Suivant</a></h4>|
 
 # 🛠️ Création de services
@@ -307,3 +307,203 @@ Je verrais ensuite en quoi consiste un module car l’explication n’est pas sa
 ---
 
 # 🗂️ Modules et portées des services
+
+## 📖 Définition des modules
+
+Les **modules** sont un concept fondamental dans **NestJS** qui permettent d'organiser une application en unités logiques. Les modules regroupent des composants connexes, y compris des contrôleurs, des services et d'autres fournisseurs, ensemble. Un aspect important des modules est qu'ils définissent la portée des fournisseurs. Dans **NestJS**, les fournisseurs peuvent avoir différentes portées, notamment :
+
+- **Singleton** : Un fournisseur singleton est créé une seule fois et est partagé dans toute l'application. Il reste le même tout au long du cycle de vie de l'application.
+- **Portée de la requête** : Un fournisseur à portée de requête est créé pour chaque requête HTTP entrante et est détruit à la fin de la requête. Cela est utile pour stocker des données spécifiques à la requête.
+- **Portée du module** : Un fournisseur à portée de module est créé une fois par module et est partagé au sein de ce module. Il peut être utilisé pour partager l'état et les fonctionnalités entre les composants d'un module.
+La portée des modules peut être représentée de cette manière :
+``` mermaid
+---
+Title : Portée des modules
+---
+flowchart TD
+	A[App Module] --> B[1er Module]
+	A --> C[2nd Module]
+	C --> D[3e Module]
+	C --> E[4e Module]
+```
+
+Dans NestJS, il y a toujours un module `root` *(racine)* qui est désigné par `App Module`. Ce dernier possède des connections à d’autres modules en cas de besoin.
+Donc ce modèle d’application ci-dessus peut être dépendant du 1er module et du 2dn module pour du traitement de la donnée ou effectuer des calculs. On peut alors placer cela dans une arborescence.
+
+Dans un second temps, le 4e module et le 3e module sont dépendants du 2e module.
+
+Les modules suivent toujours cette structure dite *en T*.
+
+C’est également valable pour les contrôleurs et les services.
+
+On peut partager ces modules, services et contrôleurs entre eux.
+
+## 🏗️ Création de nouvelles entités
+
+### 🆕 Création d’un module
+Je vais à présent créer un tout nouveau module, puis j’y ajouterai des contrôleurs et des services. Je créerai ensuite une API que j’appellerai pour qu’elle retourne le nom que lui fournirai.
+
+De la même manière que pour la création de service, il existe une manière automatisée dans NestJS de créer un nouveau module avec un terminal.
+
+Je créé le module `’sayname’` avec la commande : `nest generate module sayname`.
+
+Il y a un nouveau dossier avec un fichier créé : `sayname/sayname.module.ts` que voici :
+```typescript
+import { Module } from '@nestjs/common';
+
+@Module({})
+export class SaynameModule {}
+```
+De plus, le fichier `app.module.ts` est mis à jour automatiquement avec notamment l’importation du nouveau module créé :
+```
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { SumServiceService } from './sum-service/sum-service.service';
+import { SaynameModule } from './sayname/sayname.module';
+
+@Module({
+  imports: [SaynameModule],
+  controllers: [AppController],
+  providers: [AppService, SumServiceService],
+})
+export class AppModule {}
+
+```
+
+### 🕹️ Création d’un contrôleur
+
+À présent, je vais créer un nouveau contrôleur spécialement pour mon module `sayname` avec la commande : `nest generate controller sayname`.
+
+Voici les modifications apportées par l’exécution de cette commande :
+-	Création de `src/sayname/sayname.controller.ts`
+-	Création de `src/sayname/sayname.controller.spec.ts`
+-	Modification de `src/sayname/sayname.module.ts`
+
+Dans ce dernier fichier modifié *(`src/sayname/sayname.module.ts`)*, on voit que le nouveau module `sayname` a automatiquement importé le nouveau contrôleur du même nom :
+``` typescript
+import { Module } from '@nestjs/common';
+import { SaynameController } from './sayname.controller';
+
+@Module({
+  controllers: [SaynameController]
+})
+export class SaynameModule {}
+
+```
+
+Le fichier `src/sayname/sayname.controller.spec.ts` quant à lui, est un fichier de test du contrôleur `src/sayname/sayname.controller.ts`.
+
+Voici le nouveau contrôleur `src/sayname/sayname.controller.ts` :
+``` typescript
+import { Controller } from '@nestjs/common';
+
+@Controller('sayname')
+export class SaynameController {}
+
+```
+
+### 🔧 Création d’un service
+
+J’utilise à nouveau la commande pour créer un nouveau service que je vais nommer `sayname` également : `nest generate service sayname`.
+
+On peut voir que le fichier `src/sayname/sayname.module.ts` a été mis à jour avec l’importation du nouveau service :
+``` typescript
+import { Module } from '@nestjs/common';
+import { SaynameController } from './sayname.controller';
+import { SaynameService } from './sayname.service';
+
+@Module({
+  controllers: [SaynameController],
+  providers: [SaynameService]
+})
+export class SaynameModule {}
+
+```
+
+### 📄 Création d’un DTO
+
+Je créé un DTO qui prendra le nom sur le corps de la page que je nomme `/src/dto/sayname.dto.ts` :
+``` typescript
+export class SaynameDto {
+    name
+}
+```
+
+## 💻 Programmation des entités
+### 🕹️ Le contrôleur
+
+Je souhaite créer une requête `@Post` dans mon contrôleur `/src/sayname/sayname.controller.ts` avec une méthode `sayMyName()` qui prendra en paramètre le contenu du corps de la page web à l’endpoint `sayname` stocké dans le DTO `SaynameDto` :
+``` typescript
+import { Body, Controller, Post } from '@nestjs/common';
+import { SaynameDto } from 'src/dto/sayname.dto';
+
+@Controller('sayname')
+export class SaynameController {
+    @Post()
+    sayMyName(@Body() name: SaynameDto) {
+        return `Your name is ${name.name}`;
+    }
+}
+
+
+```
+
+> ***Remarque :** il est nécessaire d’écrire `name.name` car la méthode renvoie un objet `name` avec l’attribut `name`.*
+
+## 🧪 Test
+### 🚫 Sans service
+J’exécute l’application web NestJS avec la commande : `npm run start:dev`.
+
+Dans ma `console réseau`, je me rends sur `localhost:3000/sayname` et fais une requête `POST`. Ensuite, je passe mes paramètres directement dans l’URL. Ce qui nous donne : `POST  http://localhost:3000/sayname`.
+
+J’obtiens ainsi :
+
+![image](https://github.com/user-attachments/assets/df1caaab-affc-4591-ae56-14ec214560f1)
+
+Et donc, si je donne une valeur à `name` :
+
+![image](https://github.com/user-attachments/assets/7b820141-bd49-4fdc-9073-a3222fcfec5a)
+
+Cependant, je n’ai pas utilisé de service pour parvenir à ce résultat, je vais donc modifier quelques lignes afin de passer par ce dernier.
+
+### 🔄 Modifications avec service
+
+C’est cette fois-ci le service qui va renvoyer la réponse. J’implémente donc de manière similaire la requête `@Post` du fichier `/src/sayname/sayname.controller.ts` vers le fichier `/src/sayname/sayname.service.ts` :
+``` typescript
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class SaynameService {
+    sayMyName(name) {
+        return `Your name is ${name}`;
+    }
+}
+
+```
+
+Pour utiliser ce service, il faut à présent le définir dans le constructeur dans le fichier contrôleur `/src/sayname/sayname.controller.ts` et aussi retourner la réponse de la méthode `sayMyName` définie dans le service :
+``` typescript
+import { Body, Controller, Post } from '@nestjs/common';
+import { SaynameDto } from 'src/dto/sayname.dto';
+import { SaynameService } from './sayname.service';
+
+@Controller('sayname')
+export class SaynameController {
+
+    constructor(
+        private readonly saynameService: SaynameService
+    ){}
+
+    @Post()
+    sayMyName(@Body() name: SaynameDto) {
+        return this.saynameService.sayMyName(name.name);
+    }
+}
+
+```
+
+Si tout fonctionne bien, on devrait obtenir le même résultat :
+
+![image](https://github.com/user-attachments/assets/e97f6154-4324-4d89-aae5-5ce9a8fbec32)
+
