@@ -186,7 +186,7 @@ Et surtout, le programme `/src/app.controller.ts` :
 
 ---
 > Remarque :
-> Il m’a fallut plusieurs essais avant de trouver pourquoi la somme n’était pas possible.
+> Il m’a fallu plusieurs essais avant de trouver pourquoi la somme n’était pas possible.
 > Initialement j’essayais de faire des `parseInt()` dans le programme `/src/sum-service/sum-service.service.ts` mais j’ai vite remarqué que le problème devait pour une raison ou une autre être adressé avant l’appel au service : pendant l’acquisition des valeurs dans le programme `/src/app.controller.ts` avec la méthode `Number` qui est plus efficace que `parseInt()`.
 ---
 
