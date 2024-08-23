@@ -11,4 +11,4 @@ db.nom_de_la_collection.find({ _id: ObjectId("id_du_document") })
 
 Cette commande va récupérer le document avec l’ID spécifié depuis la collection.
 
-Il existe d’autres critères de recherches plus complexes pour filtrer les documents que l’on souhaite récupérer. Voir (find)[https://www.mongodb.com/docs/manual/reference/command/find/]
+Il existe d’autres critères de recherches plus complexes pour filtrer les documents que l’on souhaite récupérer. Voir [find](https://www.mongodb.com/docs/manual/reference/command/find/)
