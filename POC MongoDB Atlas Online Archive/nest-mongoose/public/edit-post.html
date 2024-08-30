@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modifier le post</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Modifier le post</h1>
+    <form id="editForm">
+      <input type="hidden" id="editPostId">
+      <label for="editTitre">Titre:</label><br>
+      <input type="text" id="editTitre" name="editTitre" required><br><br>
+      
+      <label for="editAuteur">Auteur:</label><br>
+      <input type="text" id="editAuteur" name="editAuteur"><br><br>
+      
+      <label for="editSlug">Slug:</label><br>
+      <input type="text" id="editSlug" name="editSlug"><br><br>
+      
+      <label for="editContenu">Contenu:</label><br>
+      <textarea id="editContenu" name="editContenu"></textarea><br><br>
+      
+      <label for="editDateCreation">Date de Création:</label><br>
+      <input type="date" id="editDateCreation" name="editDateCreation"><br><br>
+      
+      <label for="editPublie">Publié:</label><br>
+      <input type="checkbox" id="editPublie" name="editPublie"><br><br>
+      
+      <label for="editTags">Tags (séparés par des virgules):</label><br>
+      <input type="text" id="editTags" name="editTags"><br><br>
+      
+      <button type="submit">Enregistrer les modifications</button>
+      <button type="button" onclick="window.location.href='/index.html'">Annuler</button>
+    </form>
+  </div>
+
+  <script>
+    // Fonction pour récupérer les détails d'un post spécifique
+    async function fetchPostDetails(postId) {
+      try {
+        const response = await fetch(`/post/${postId}`);
+        const post = await response.json();
+
+        // Remplir le formulaire avec les détails du post
+        document.getElementById('editPostId').value = post._id;
+        document.getElementById('editTitre').value = post.titre;
+        document.getElementById('editAuteur').value = post.auteur || '';
+        document.getElementById('editSlug').value = post.slug || '';
+        document.getElementById('editContenu').value = post.contenu || '';
+        document.getElementById('editDateCreation').value = post.dateCreation ? new Date(post.dateCreation).toISOString().substr(0, 10) : '';
+        document.getElementById('editPublie').checked = post.publie;
+        document.getElementById('editTags').value = post.tags ? post.tags.join(',') : '';
+      } catch (error) {
+        console.error('Erreur lors de la récupération du post:', error);
+      }
+    }
+
+    // Fonction pour mettre à jour le post
+    async function updatePost(e) {
+      e.preventDefault();
+      
+      const id = document.getElementById('editPostId').value;
+      const titre = document.getElementById('editTitre').value;
+      const auteur = document.getElementById('editAuteur').value;
+      const slug = document.getElementById('editSlug').value;
+      const contenu = document.getElementById('editContenu').value;
+      const dateCreation = document.getElementById('editDateCreation').value;
+      const publie = document.getElementById('editPublie').checked;
+      const tags = document.getElementById('editTags').value.split(',').map(tag => tag.trim());
+
+      try {
+        const response = await fetch(`/post/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            titre,
+            auteur,
+            slug,
+            contenu,
+            dateCreation,
+            publie,
+            tags,
+          }),
+        });
+
+        if (response.ok) {
+          alert('Post modifié avec succès!');
+          window.location.href = '/index.html'; // Rediriger vers la page d'accueil après la modification
+        } else {
+          alert('Erreur lors de la modification du post.');
+        }
+      } catch (error) {
+        console.error('Erreur lors de la modification du post:', error);
+      }
+    }
+
+    // Ajouter l'événement pour soumettre le formulaire de modification
+    document.getElementById('editForm').addEventListener('submit', updatePost);
+
+    // Charger les détails du post dès que la page est chargée
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      const postId = params.get('id');
+      if (postId) {
+        fetchPostDetails(postId);
+      }
+    };
+  </script>
+</body>
+</html>

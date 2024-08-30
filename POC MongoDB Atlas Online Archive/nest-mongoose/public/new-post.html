@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nouveau post</title>
+</head>
+<body>
+  <h1>Créer un nouveau post</h1>
+  <form id="postForm">
+    <label for="titre">Titre:</label><br>
+    <input type="text" id="titre" name="titre" required><br><br>
+    
+    <label for="auteur">Auteur:</label><br>
+    <input type="text" id="auteur" name="auteur"><br><br>
+    
+    <label for="slug">Slug:</label><br>
+    <input type="text" id="slug" name="slug"><br><br>
+    
+    <label for="contenu">Contenu:</label><br>
+    <textarea id="contenu" name="contenu"></textarea><br><br>
+    
+    <label for="dateCreation">Date de Création:</label><br>
+    <input type="date" id="dateCreation" name="dateCreation"><br><br>
+    
+    <label for="publie">Publié:</label><br>
+    <input type="checkbox" id="publie" name="publie"><br><br>
+    
+    <label for="tags">Tags (séparés par des virgules):</label><br>
+    <input type="text" id="tags" name="tags"><br><br>
+
+    <button type="submit">Créer le post</button>
+  </form>
+
+  <script>
+    document.getElementById('postForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const titre = document.getElementById('titre').value;
+      const auteur = document.getElementById('auteur').value;
+      const slug = document.getElementById('slug').value;
+      const contenu = document.getElementById('contenu').value;
+      const dateCreation = document.getElementById('dateCreation').value;
+      const publie = document.getElementById('publie').checked;
+      const tags = document.getElementById('tags').value.split(',').map(tag => tag.trim());
+
+      const response = await fetch('/post', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          titre,
+          auteur,
+          slug,
+          contenu,
+          dateCreation,
+          publie,
+          tags,
+        }),
+      });
+
+      if (response.ok) {
+        alert('Post créé!');
+        window.location.href = '/';
+      } else {
+        alert('Erreur lors de la création du post.');
+      }
+    });
+  </script>
+</body>
+</html>

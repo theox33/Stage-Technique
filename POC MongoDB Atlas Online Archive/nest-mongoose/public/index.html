@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .post {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .post h3 {
+      margin: 0;
+      padding: 0;
+    }
+    .post button {
+      margin-top: 10px;
+    }
+    #searchBar {
+      margin-bottom: 20px;
+    }
+    #sortOptions {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bienvenue sur le site de gestion des posts</h1>
+  
+  <button onclick="window.location.href='/new-post.html'">Créer un nouveau post</button>
+  
+  <div id="searchBar">
+    <input type="text" id="searchInput" placeholder="Rechercher...">
+    <button onclick="filterPosts()">Rechercher</button>
+  </div>
+
+  <div id="sortOptions">
+    <label for="sortSelect">Trier par :</label>
+    <select id="sortSelect" onchange="sortPosts()">
+      <option value="dateCreation">Date de création</option>
+      <option value="titre">Titre</option>
+      <option value="auteur">Auteur</option>
+      <option value="publie">Publié</option>
+    </select>
+  </div>
+
+  <h2>Posts existants</h2>
+  <div id="postsContainer">
+    <!-- Les posts seront insérés ici par JavaScript -->
+  </div>
+
+  <script>
+    console.log("Script is running");
+
+    let posts = []; // Variable pour stocker les posts récupérés
+
+    async function fetchPosts() {
+      try {
+        console.log("Fetching posts...");
+        const response = await fetch('/post');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        posts = await response.json();
+        console.log("Posts fetched:", posts);
+        displayPosts(posts);
+      } catch (error) {
+        console.error('Erreur lors de la récupération des posts:', error);
+      }
+    }
+
+    function displayPosts(postsToDisplay) {
+      console.log("Displaying posts...");
+      const postsContainer = document.getElementById('postsContainer');
+      postsContainer.innerHTML = '';
+      
+      postsToDisplay.forEach(post => {
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post';
+        
+        postDiv.innerHTML = `
+          <h3>${post.titre}</h3>
+          <p><strong>Auteur:</strong> ${post.auteur}</p>
+          <p><strong>Date de création:</strong> ${new Date(post.dateCreation).toLocaleDateString()}</p>
+          <p><strong>Contenu:</strong> ${post.contenu}</p>
+          <p><strong>Publié:</strong> ${post.publie ? 'Oui' : 'Non'}</p>
+          <p><strong>Tags:</strong> ${post.tags ? post.tags.join(', ') : 'Aucun'}</p>
+          <button onclick="window.location.href='/edit-post.html?id=${post._id}'">Modifier</button>
+          <button onclick="deletePost('${post._id}')">Supprimer</button>
+        `;
+        
+        postsContainer.appendChild(postDiv);
+      });
+    }
+
+    function filterPosts() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      console.log("Filtering posts with query:", query);
+      const filteredPosts = posts.filter(post => {
+        return (
+          post.titre.toLowerCase().includes(query) ||
+          post.auteur.toLowerCase().includes(query) ||
+          post.contenu.toLowerCase().includes(query) ||
+          (post.tags && post.tags.some(tag => tag.toLowerCase().includes(query)))
+        );
+      });
+      console.log("Filtered posts:", filteredPosts);
+      displayPosts(filteredPosts);
+    }
+
+    function sortPosts() {
+      const sortBy = document.getElementById('sortSelect').value;
+      console.log("Sorting posts by:", sortBy);
+      const sortedPosts = [...posts].sort((a, b) => {
+        if (sortBy === 'dateCreation') {
+          return new Date(b.dateCreation) - new Date(a.dateCreation);
+        } else if (sortBy === 'titre' || sortBy === 'auteur') {
+          return a[sortBy].localeCompare(b[sortBy]);
+        } else if (sortBy === 'publie') {
+          return b.publie - a.publie;
+        }
+      });
+      console.log("Sorted posts:", sortedPosts);
+      displayPosts(sortedPosts);
+    }
+
+    async function deletePost(postId) {
+      if (confirm('Voulez-vous vraiment supprimer ce post?')) {
+        try {
+          console.log("Deleting post with ID:", postId);
+          const response = await fetch(`/post/${postId}`, {
+            method: 'DELETE',
+          });
+
+          if (response.ok) {
+            alert('Post supprimé avec succès!');
+            fetchPosts(); // Rafraîchir la liste des posts
+          } else {
+            alert('Erreur lors de la suppression du post.');
+          }
+        } catch (error) {
+          console.error('Erreur lors de la suppression du post:', error);
+        }
+      }
+    }
+
+    // Charger les posts dès que la page est chargée
+    window.onload = fetchPosts;
+  </script>
+</body>
+</html>
