@@ -22,7 +22,7 @@ Je créé le projet `mongodb-mongoose`, l’initialise, j’installe les package
 npm i @nestjs/mongoose mongoose
 ```
 
-### Création du schéma `post.schema.ts`
+### 📐 Création du schéma `post.schema.ts`
 
 Avec Mongoose, tout est dérivé d’un Schéma.
 Chaque schéma correspond à une collection MongoDB et définit la structure des documents au sein de cette collection. Les schémas sont utilisés pour définir des Modèles. Les modèles sont responsables de la création et de la lecture des documents à partir de la base de données MongoDB sous-jacente.
@@ -87,7 +87,7 @@ export const CatSchema = new mongoose.Schema({
 });
 ```
 
-### Création du module `post.module.ts`
+### 📦 Création du module `post.module.ts`
 Le fichier `post.schema.ts` se trouve dans un dossier du répertoire `post`, où on difini également le `PostModule`. Bien que l’on puisse stocker les fichiers de schéma où on le souhaite, il est recommandé de les stocker près de leurs objets de domaine associés, dans le répertoire de module approprié.
 
 `post.module.ts` :
@@ -112,7 +112,7 @@ export class PostModule {}
 
 Le `MongooseModule` fournit la méthode `forFeature()` pour configurer le module, y compris la définition des modèles. Si on souhaite également utiliser les modèles dans un autre module, il faut ajouter `MongooseModule` à la section exports de `PostModule` et importer `PostModule` dans l’autre module.
 
-### Création du service `post.service.ts`
+### 🔧 Création du service `post.service.ts`
 Une fois le schéma enregistré, on peut injecter un modèle `Post` dans le `post.service.ts` en utilisant le décorateur `@Injectable()` :
 ```typescript
 import { Model } from 'mongoose';
@@ -148,7 +148,7 @@ export class PostService {
 }
 ```
 
-### Création du contrôleur `post.controller.ts` 
+### 🕹️ Création du contrôleur `post.controller.ts` 
 
 Pour gérer les requêtes HTTP liées aux opérations CRUD (Créer, Lire, Mettre à jour, Supprimer) sur les posts, je vais créer un contrôleur post.controller.ts dans le projet NestJS. Ce contrôleur sera responsable de l'interface entre les requêtes utilisateurs et les services de l'application, en utilisant les méthodes du PostService pour interagir avec la base de données MongoDB.
 
@@ -220,7 +220,7 @@ Je défini enfin les méthodes du contrôlleur qui correspondent aux différente
 > ```
 > Enfin, cette méthode, qui correspond à une requête DELETE sur la route `/post/:id`, permet de supprimer un post en fonction de son ID.
 
-### Création du DTO `create-post.dto.ts`
+### 📄 Création du DTO `create-post.dto.ts`
 
 Pour structurer et valider les données entrantes lors de la création ou de la mise à jour d'un post, je créé un Data Transfer Object (DTO) dans NestJS. Le DTO est une classe TypeScript qui définit la forme des données attendues, ce qui aide à garantir que les requêtes envoyées à l'API contiennent toutes les informations nécessaires.
 
@@ -249,7 +249,7 @@ async create(@Body() createPostDto: CreatePostDto): Promise<PostModel> {
 
 Le `CreatePostDto` est ici utilisé pour transférer les données de la requête vers le service, garantissant ainsi que chaque post créé contient toutes les informations requises et conformes à la structure définie.
 
-### Modification du module principal `app.module.ts`
+### 🔄 Modification du module principal `app.module.ts`
 
 
 Le fichier `app.module.ts` constitue le point d'entrée principal de l'application NestJS. Il orchestre l'importation des modules nécessaires, notamment le module de gestion des posts, la configuration de MongoDB via Mongoose, et la configuration du serveur statique.
