@@ -273,6 +273,7 @@ import { MongooseModule } from '@nestjs/mongoose';
   ],
 })
 export class AppModule {}
+```
 
 Le tableau `imports` à l'intérieur du décorateur @Module regroupe les différents modules nécessaires pour le bon fonctionnement de l'application :
 - ServeStaticModule
