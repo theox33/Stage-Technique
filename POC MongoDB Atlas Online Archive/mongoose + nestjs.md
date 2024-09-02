@@ -21,30 +21,8 @@ Je créé le projet `mongodb-mongoose`, l’initialise, j’installe les package
 ``` sh
 npm i @nestjs/mongoose mongoose
 ```
-Je peux ensuite importer le module `MongooseModule` dans `app.module.ts` :
 
-``` typescript
-import { Module } from '@nestjs/common';
-import { PostModule } from './posts/post.module';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
-import { MongooseModule } from '@nestjs/mongoose';
-
-@Module({
-  imports: [
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public'),
-    }),
-    MongooseModule.forRoot('mongodb+srv://mtonnelier:03e300TiCd5Cis3B@atlasparis.0nerc.mongodb.net/posts'),
-    PostModule,
-  ],
-})
-export class AppModule {}
-```
-
-Ici, la méthode `forRoot()` accepte la mêmme configuration objet que la méthode `mongoose.connect()` précédemment utilisée dans le package Mongoose. J'y renseigne donc l'URI.
-
-### Injection de modèle
+### Création du schéma `post.schema.ts`
 
 Avec Mongoose, tout est dérivé d’un Schéma.
 Chaque schéma correspond à une collection MongoDB et définit la structure des documents au sein de cette collection. Les schémas sont utilisés pour définir des Modèles. Les modèles sont responsables de la création et de la lecture des documents à partir de la base de données MongoDB sous-jacente.
@@ -109,6 +87,7 @@ export const CatSchema = new mongoose.Schema({
 });
 ```
 
+### Création du module `post.module.ts`
 Le fichier `post.schema.ts` se trouve dans un dossier du répertoire `post`, où on difini également le `PostModule`. Bien que l’on puisse stocker les fichiers de schéma où on le souhaite, il est recommandé de les stocker près de leurs objets de domaine associés, dans le répertoire de module approprié.
 
 `post.module.ts` :
@@ -133,6 +112,7 @@ export class PostModule {}
 
 Le `MongooseModule` fournit la méthode `forFeature()` pour configurer le module, y compris la définition des modèles. Si on souhaite également utiliser les modèles dans un autre module, il faut ajouter `MongooseModule` à la section exports de `PostModule` et importer `PostModule` dans l’autre module.
 
+### Création du service `post.service.ts`
 Une fois le schéma enregistré, on peut injecter un modèle `Post` dans le `post.service.ts` en utilisant le décorateur `@Injectable()` :
 ```typescript
 import { Model } from 'mongoose';
@@ -168,7 +148,7 @@ export class PostService {
 }
 ```
 
-### Création du controller `post.controller.ts`
+### Création du contrôleur `post.controller.ts` 
 
 Pour gérer les requêtes HTTP liées aux opérations CRUD (Créer, Lire, Mettre à jour, Supprimer) sur les posts, je vais créer un contrôleur post.controller.ts dans le projet NestJS. Ce contrôleur sera responsable de l'interface entre les requêtes utilisateurs et les services de l'application, en utilisant les méthodes du PostService pour interagir avec la base de données MongoDB.
 
@@ -240,4 +220,74 @@ Je défini enfin les méthodes du contrôlleur qui correspondent aux différente
 > ```
 > Enfin, cette méthode, qui correspond à une requête DELETE sur la route `/post/:id`, permet de supprimer un post en fonction de son ID.
 
+### Création du DTO `create-post.dto.ts`
 
+Pour structurer et valider les données entrantes lors de la création ou de la mise à jour d'un post, je créé un Data Transfer Object (DTO) dans NestJS. Le DTO est une classe TypeScript qui définit la forme des données attendues, ce qui aide à garantir que les requêtes envoyées à l'API contiennent toutes les informations nécessaires.
+
+Le fichier `create-post.dto.ts` contient la définition de la classe `CreatePostDto`, qui va servir à transférer les données nécessaires pour créer un post. Voici la structure de cette classe :
+
+```typescript
+export class CreatePostDto {
+    titre: string;
+    auteur: string;
+    slug: string;
+    contenu: string;
+    dateCreation: Date;
+    publie: boolean;
+    tags: string[];
+}
+
+Le `CreatePostDto` est utilisé dans le contrôleur `PostController` pour valider les données des requêtes entrantes lors de la création ou de la mise à jour des posts. En définissant clairement la forme des données attendues, le DTO assure que seules les données valides sont traitées par l'application.
+
+Par exemple, dans la méthode create du contrôleur, j'utilise le DTO comme ceci :
+```typescript
+@Post()
+async create(@Body() createPostDto: CreatePostDto): Promise<PostModel> {
+    return this.postService.create(createPostDto);
+}
+```
+
+Le `CreatePostDto` est ici utilisé pour transférer les données de la requête vers le service, garantissant ainsi que chaque post créé contient toutes les informations requises et conformes à la structure définie.
+
+### Modification du module principal `app.module.ts`
+
+
+Le fichier `app.module.ts` constitue le point d'entrée principal de l'application NestJS. Il orchestre l'importation des modules nécessaires, notamment le module de gestion des posts, la configuration de MongoDB via Mongoose, et la configuration du serveur statique.
+
+Voici le contenu du fichier `app.module.ts` :
+
+```typescript
+import { Module } from '@nestjs/common';
+import { PostModule } from './posts/post.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+import { MongooseModule } from '@nestjs/mongoose';
+
+@Module({
+  imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
+    MongooseModule.forRoot('mongodb+srv://mtonnelier:03e300TiCd5Cis3B@atlasparis.0nerc.mongodb.net/posts'),
+    PostModule,
+  ],
+})
+export class AppModule {}
+
+Le tableau `imports` à l'intérieur du décorateur @Module regroupe les différents modules nécessaires pour le bon fonctionnement de l'application :
+- ServeStaticModule
+> ```
+> ServeStaticModule.forRoot({
+>   rootPath: join(__dirname, '..', 'public'),
+> }),
+> ```
+> Ici, `ServeStaticModule.forRoot()` configure le serveur statique pour servir les fichiers depuis le répertoire public. Le chemin est résolu dynamiquement en utilisant la fonction `join`, assurant ainsi la compatibilité avec différents systèmes d'exploitation.
+
+- MongooseModule
+> ```
+> MongooseModule.forRoot('mongodb+srv://mtonnelier:03e300TiCd5Cis3B@atlasparis.0nerc.mongodb.net/posts'),
+> ```
+> Cette ligne configure la connexion à une base de données MongoDB hébergée sur MongoDB Atlas. La méthode forRoot() accepte une URI de connexion MongoDB, qui inclut le nom d'utilisateur, le mot de passe, et le nom de la base de données. Cela permet à l'application de se connecter à la base de données posts et d'y stocker les données de manière sécurisée. Ici, la méthode `forRoot()` accepte la mêmme configuration objet que la méthode `mongoose.connect()` précédemment utilisée dans le package Mongoose. J'y renseigne donc l'URI.
+
+- PostModule
+> Le PostModule est importé pour permettre la gestion des opérations CRUD (Créer, Lire, Mettre à jour, Supprimer) sur les posts. En l'incluant dans le tableau imports, il devient accessible dans l'application.
