@@ -21,7 +21,7 @@ Mongoose est pensé pour fonctionner avec NodeJS et est une bibliothèque ODM *(
 Par défaut, MongoDB a un modèle de données flexible. Cela rend les bases de données MongoDB très faciles à modifier et à mettre à jour à l’avenir. Mais beaucoup de développeurs sont habitués à avoir des schémas rigides.
 Mongoose impose un schéma semi-rigide dès le départ. Avec Mongoose, les développeurs doivent définir un Schéma et un Modèle.
 
-### Définition d'un schéma Mongoose
+### 📝 Définition d'un schéma Mongoose
 
 À noter qu’un `schéma` défini la structure d’une collection de documents. Un schéma Mongoose se mappe directement à une collection MongoDB.
 
@@ -55,7 +55,7 @@ const blog = new Schema({
   }]
 });
 ```
-### Définition d'un modèle Mongoose
+### 📐 Définition d'un modèle Mongoose
 
 Les modèles prennent un schéma et l’appliquent à chaque document de sa collection. Les modèles sont responsables de toutes les interactions avec les documents, comme *la création, la lecture, la mise à jour et la suppression (CRUD)*.
 
@@ -67,11 +67,11 @@ const Blog = mongoose.model('Blog', blog);
 
 Dans cet exemple, `Blog` se traduit par la collection `blogs`.
 
-## Application Mongoose
+## 💻 Application Mongoose
 
 Je vais essayer de manipuler une base de données MongoDB Atlas à partir d’une application Mongoose.
 
-### Installation de l'environnement
+### ⚙️ Installation de l'environnement
 
 Je créé le projet `mongodb-mongoose`, l’initialise, j’installe les packages et ouvre ce projet dans vs code :
 ``` sh
@@ -107,7 +107,7 @@ J’ajoute à présent un script dans `package.json` pour exécuter le projet. A
 }
 ```
 
-### Connexion à MongoDB
+### 🔌 Connexion à MongoDB
 
 Afin de se connecter à MongoDB, il faut créer le fichier `index.js` et utiliser la commande mongoose.connect() avec notre chaîne de connexion MongoDb Atlas :
 ``` typescript
@@ -116,7 +116,7 @@ import mongoose from 'mongoose'
 mongoose.connect("mongodb+srv://<utilisateur>:<mdp>@cluster0.eyhty.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 ```
 
-### Création d'un schéma
+### 🗂️ Création d'un schéma
 
 Avant de faire quoi que ce soit avec la connexion, il me faut créer un schéma et un modèle.
 Il est conseillé dans la documentation de créer un fichier de schéma/modèle pour chaque schéma nécessaire. Je vais donc créer une nouvelle structure de dossier/fichier : `model/Blog.js` :
@@ -144,9 +144,9 @@ const Blog = model('Blog', blogSchema);
 export default Blog;
 ```
 
-## Manipulation de données
+## 📊 Manipulation de données
 
-### Insertion de données
+### ➕ Insertion de données
 
 Maintenant que je possède mon premier modèle et schéma, je peux commencer à insérer des données dans la base de données.
 
@@ -204,7 +204,7 @@ Cette méthode est meilleure car elle permet non seulement d’insérer un docum
 ![image](https://github.com/user-attachments/assets/abcfc16c-d288-4106-8c23-a2bd073ca114)
 ![image](https://github.com/user-attachments/assets/2b1d97ca-7a72-4ae2-a23e-999262783404)
 
-### Mise à jour de données
+### 🔄 Mise à jour de données
 
 Mongoose simplifie également la modification de données.
 Je vais modifier le titre de l’article créé en dernier lors de l’étape précédente :
@@ -219,7 +219,7 @@ On peut directement éditer l’objet local, puis utiliser la méthode `save()` 
 
 Mais il faut avouer que j’ai un peu triché ici, il faudrait pouvoir correctement identifier la donnée pour la modifier...
 
-### Trouver des données
+### 🔍 Trouver des données
 
 Afin d’être sur de modifier le bon document, il faut utiliser la méthode `findById()` *(d’autres méthodes existent bien sûr)* pour obtenir le bon document par son identifiant unique :
 ``` javascript
@@ -258,7 +258,7 @@ console.log(troisiemeArticle);
 ```
 ![image](https://github.com/user-attachments/assets/e5e73f15-bb79-41b1-a40e-ac8f827697b9)
 
-### Projeter les champs de documents
+### 📋 Projeter les champs de documents
 
 En MongoDB, projeter signifie *sélectionner uniquement certains champs d’un document pour les inclure dans le résultat d’une requête*. Cela permet de **récupérer uniquement les données nécessaires**, ce qui peut améliorer les performances et réduire la quantité de données transférées.
 ``` javascript
@@ -269,7 +269,7 @@ console.log(article);
 Dans cet exemple, au lieu de récupérer tous les champs d’un document, on choisit de ne récupérer que les champs `title`, `slug`, et `content` :
 ![image](https://github.com/user-attachments/assets/7ae8e256-5c1c-492b-912d-349591ba22ff)
 
-### Supprimer des données
+### 🗑️ Supprimer des données
 
 Comme avec le driver classique de `NodeJS`, il existe les méthodes `deleteOne()` et `deleteMany()` dans Mongoose :
 ``` javascript
@@ -303,7 +303,7 @@ J’ai laissé la condition vide afin que tout soit supprimé. J’aurais pu met
 ![image](https://github.com/user-attachments/assets/732c1a19-eec9-4b74-9d65-5a704b599fa2)
 ![image](https://github.com/user-attachments/assets/15c73008-f268-4afe-90da-e497df489f13)
 
-### Validation
+### ✔️ Validation
 
 Jusqu’ici les documents que j’ai insérés ne contiennent pas d’auteur, de dates ou de commentaires. Jusqu’à présent, j’ai défini à quoi devrait ressembler la structure d’un document, mais je n’ai pas défini quels champs sont *réellement **obligatoires***. À ce stade, n’importe quel champ peut être omis. On peut donc définir des champs obligatoires dans le schéma `Blog.js` :
 ``` javascript
