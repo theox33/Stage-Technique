@@ -67,7 +67,7 @@ const Blog = mongoose.model('Blog', blog);
 
 Dans cet exemple, `Blog` se traduit par la collection `blogs`.
 
-## 📊 Manipulation de données
+## 📊 Manipulation de données via une app
 
 ### ➕ Insertion de données
 
