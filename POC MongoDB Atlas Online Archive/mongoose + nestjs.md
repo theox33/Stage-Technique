@@ -1,4 +1,4 @@
-# 🪿 Mongoose + 🐈‍⬛ Nest.JS
+# 🪿 Mongoose + 🐦 Nest.JS
 
 J’ai précédemment introduit `Mongoose` afin de communiquer avec MongoDB Atlas depuis une application externe.
 
