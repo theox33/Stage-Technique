@@ -69,6 +69,8 @@ Dans cet exemple, `Blog` se traduit par la collection `blogs`.
 
 ## 📊 Manipulation de données via une app
 
+
+
 ### ➕ Insertion de données
 
 Maintenant que je possède mon premier modèle et schéma, je peux commencer à insérer des données dans la base de données.
