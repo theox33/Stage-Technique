@@ -5,6 +5,13 @@ J’ai précédemment introduit `Mongoose` afin de communiquer avec MongoDB Atla
 Cependant, notre objectif n'est pas d'utiliser Mongoose seul mais avec NestJS.
 Il me faut donc recommencer le projet avec cette fois-ci NestJS.
 
+## 📑 Table des matières
+
+| <div align="left"><h2>💻 <a href="https://github.com/theox33/Stage-Technique/blob/main/POC%20MongoDB%20Atlas%20Online%20Archive/mongoose%20%2B%20nestjs.md#-application-mongoose">Application Mongoose</a></h2><ul><li><h3>⚙️ <a href="">Installation de l'environnement</a></h3></li><li><h3>📐 <a href="">Création du schéma `post.schema.ts`</a></h3><li><h3>📦 <a href="">Création du module `post.module.ts`</a></h3></li><li><h3>🔧 <a href="">Création du service `post.service.ts`</a></h3></li><li><h3>🕹️ <a href="">Création du contrôleur `post.controller.ts`</a><h3></li><li><h3>📄 <a href="">Création du DTO `create-post.dto.ts`</a></h3></li><li><h3>🔄 <a href="">Modification du module principal `app.module.ts`</a></h3></li></ul></div> |
+|-----------------------------------------|
+| <div align="right"><h4>🔜</h4></div> |
+
+
 ## 💻 Application Mongoose
 
 Pour rappel, le projet en question est très simple, il s'agira d'un site internet où les utilisateurs pourront :
