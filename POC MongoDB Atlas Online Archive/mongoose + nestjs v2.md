@@ -11,7 +11,7 @@ J'ai vu qu'il était possible de configurer des moteurs de templates pour géné
 Pour ce faire, je dois installer `Handlebars` qui est un moteur de templates utilisé pour générer des pages HTMl dynamiques côté serveur.
 
 ``` sh
-npm install @nestjs/platform-express hbs
+npm install hbs @nestjs/platform-express
 ```
 
 Cela permet de combiner des données avec des templates HTML pour générer des pages Web.
@@ -19,32 +19,45 @@ Cela permet de combiner des données avec des templates HTML pour générer des 
 ## Configuration de Handlebars dans `app.module.ts`
 ``` typescript
 import { Module } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { PostModule } from './post/post.module';
+import { PostModule } from './posts/post.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
-import { RenderModule } from 'nest-render-module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 @Module({
   imports: [
-    PostModule,
-    RenderModule.forRoot({
-      rootPath: join(__dirname, '..', 'views'), // Path to your views directory
-      engine: 'hbs', // Handlebars engine
-      extension: 'hbs', // Default extension for templates
+    // Configuration pour les fichiers statiques
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
     }),
-  ],
-  controllers: [AppController],
-  providers: [AppService],
-})
-export class AppModule {}
+    
+    // Configuration de la connexion MongoDB
+    MongooseModule.forRoot('mongodb+srv://mtonnelier:03e300TiCd5Cis3B@atlasparis.0nerc.mongodb.net/posts'),
 
+    // Module des posts
+    PostModule,
+  ],
+})
+export class AppModule {
+  constructor(private app: NestExpressApplication) {}
+
+  configure() {
+    // Configuration pour Handlebars
+    this.app.setBaseViewsDir(join(__dirname, '..', 'views'));
+    this.app.setViewEngine('hbs');
+  }
+}
 ```
+
+Ici, `hbs` est le package Handlebars pour Node.js.
+`@nestjs/platform-express` est le module nécessaire pour configurer et utiliser `Express.js` comme serveur HTTP sous NestJS, ce qui permet d'intégrer Handlebars.
+`setBaseViewsDir` : Définit le chemin du répertoire contenant les vues (fichiers .hbs), ici dans le dossier `/views`.
+`setViewEngine` : Spécifie que hbs (Handlebars) doit être utilisé comme moteur de rendu pour les templates.
 
 ## Création des vues
 
-Je créé un dossier views à la racine de mon projet. Dans ce dossier, j'y ajoute des fichiers .hbs pour les pages HTML que je veux générer dynamiquement.
+Je créé un dossier `views` dans `posts`. Dans ce dossier, j'y ajoute des fichiers .hbs pour les pages HTML que je veux générer dynamiquement.
 J'ai donc pris le contenu de mon ancien index.html et je l'ai transformé en template Handlebars :
 
 ### `index.hbs` :
@@ -192,10 +205,10 @@ Voici à quoi ressemble maintenant ce contrôleur :
 ``` typescript
 import { Controller, Get, Post, Param, Body, Render, Res, Query } from '@nestjs/common';
 import { PostService } from './post.service';
-import { CreatePostDto } from './create-post.dto';
+import { CreatePostDto } from './dto/create-post.dto';
 
 @Controller()
-export class AppController {
+export class PostController {
   constructor(private readonly postService: PostService) {}
 
   @Get('/')
