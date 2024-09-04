@@ -404,25 +404,25 @@ export class PostService {
 }
 ```
 
-### Ajout de la méthode findAll :
+### Ajout de la méthode `findAll` :
 
 - Cette méthode est utilisée pour récupérer tous les posts de la base de données, avec des options pour la recherche (search) et le tri (sort).
 - Elle remplace la logique de filtrage et de tri qui était précédemment gérée côté client par des fonctions JavaScript (filterPosts et sortPosts).
 
-### Méthode findOne :
+### Méthode `findOne` :
 
 - Récupère un seul post par son identifiant. Cette méthode n'a probablement pas changé, mais elle est essentielle pour récupérer les détails d'un post lors de l'édition.
 
-### Méthode create :
+### Méthode `create` :
 
 - Crée un nouveau post dans la base de données à partir des données fournies via un DTO (Data Transfer Object).
 - Cela remplace la soumission du formulaire via JavaScript.
 
-### Méthode update :
+### Méthode `update` :
 
 - Met à jour un post existant avec de nouvelles données.
 - Cette méthode est utilisée lors de la soumission du formulaire de modification d'un post.
-### Méthode remove :
+### Méthode `remove` :
 
 - Supprime un post de la base de données par son identifiant.
 - Cette méthode remplace la fonction JavaScript deletePost.
