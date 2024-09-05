@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .post { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+    .post h3 { margin: 0; padding: 0; }
+    .post button { margin-top: 10px; }
+    #searchBar, #sortOptions { margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Bienvenue sur le site de gestion des posts</h1>
+  <button onclick="window.location.href='/new-post'">Créer un nouveau post</button>
+  <div id="searchBar">
+  <input type="text" id="searchInput" placeholder="Rechercher..." value="{{search}}">
+  <button onclick="window.location.href='/?search=' + document.getElementById('searchInput').value + '&sort={{sort}}'">Rechercher</button>
+</div>
+<div id="sortOptions">
+  <label for="sortSelect">Trier par :</label>
+  <select id="sortSelect" onchange="window.location.href='/?sort=' + document.getElementById('sortSelect').value + '&search={{search}}'">
+    <option value="dateCreation" {{#if (eq sort "dateCreation")}}selected{{/if}}>Date de création</option>
+    <option value="titre" {{#if (eq sort "titre")}}selected{{/if}}>Titre</option>
+    <option value="auteur" {{#if (eq sort "auteur")}}selected{{/if}}>Auteur</option>
+    <option value="publie" {{#if (eq sort "publie")}}selected{{/if}}>Publié</option>
+  </select>
+</div>
+  <h2>Posts existants</h2>
+  <div id="postsContainer">
+    {{#each posts}}
+      <div class="post">
+        <h3>{{this.titre}}</h3>
+        <p><strong>Auteur:</strong> {{this.auteur}}</p>
+        <p><strong>Date de création:</strong> {{formatDate this.dateCreation}}</p>
+        <p><strong>Contenu:</strong> {{this.contenu}}</p>
+        <p><strong>Publié:</strong> {{#if this.publie}}Oui{{else}}Non{{/if}}</p>
+        <p><strong>Tags:</strong> {{#if this.tags}}{{this.tags.join ', '}}{{else}}Aucun{{/if}}</p>
+        <button onclick="window.location.href='/edit-post/{{this._id}}'">Modifier</button>
+        <form action="/post/{{this._id}}/delete" method="POST">
+          <button type="submit">Supprimer</button>
+        </form>
+
+      </div>
+    {{/each}}
+  </div>
+</body>
+</html>

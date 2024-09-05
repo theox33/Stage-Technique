@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modifier le post</title>
+</head>
+<body>
+  <h1>Modifier le post</h1>
+  <form action="/post/{{post._id}}" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <label for="editTitre">Titre:</label><br>
+    <input type="text" id="editTitre" name="titre" value="{{post.titre}}" required><br><br>
+
+    <label for="editAuteur">Auteur:</label><br>
+    <input type="text" id="editAuteur" name="auteur" value="{{post.auteur}}"><br><br>
+
+    <label for="editSlug">Slug:</label><br>
+    <input type="text" id="editSlug" name="slug" value="{{post.slug}}"><br><br>
+
+    <label for="editContenu">Contenu:</label><br>
+    <textarea id="editContenu" name="contenu">{{post.contenu}}</textarea><br><br>
+
+    <label for="editDateCreation">Date de Création:</label><br>
+    <input type="date" id="editDateCreation" name="dateCreation" value="{{formatDate post.dateCreation}}"><br><br>
+
+    <label for="editPublie">Publié:</label><br>
+    <input type="checkbox" id="editPublie" name="publie" {{#if post.publie}}checked{{/if}}><br><br>
+
+    <label for="editTags">Tags (séparés par des virgules):</label><br>
+    <input type="text" id="editTags" name="tags" value="{{post.tags.join ', '}}"><br><br>
+
+    <button type="submit">Enregistrer les modifications</button>
+    <button type="button" onclick="window.location.href='/index.html'">Annuler</button>
+  </form>
+</body>
+</html>

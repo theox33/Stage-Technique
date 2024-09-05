@@ -1,7 +1,12 @@
 version: '3'
 services:
   app:
-    image: my-nestjs-app
     build: .
     ports:
       - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: node dist/src/main
+    environment:
+      - NODE_ENV=production
