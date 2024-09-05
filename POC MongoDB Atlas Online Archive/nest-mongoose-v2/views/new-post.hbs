@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nouveau post</title>
+</head>
+<body>
+  <h1>Créer un nouveau post</h1>
+  <form action="/post" method="POST">
+    <label for="titre">Titre:</label><br>
+    <input type="text" id="titre" name="titre" required><br><br>
+
+    <label for="auteur">Auteur:</label><br>
+    <input type="text" id="auteur" name="auteur"><br><br>
+
+    <label for="slug">Slug:</label><br>
+    <input type="text" id="slug" name="slug"><br><br>
+
+    <label for="contenu">Contenu:</label><br>
+    <textarea id="contenu" name="contenu"></textarea><br><br>
+
+    <label for="dateCreation">Date de Création:</label><br>
+    <input type="date" id="dateCreation" name="dateCreation"><br><br>
+
+    <label for="publie">Publié:</label><br>
+    <input type="checkbox" id="publie" name="publie"><br><br>
+
+    <label for="tags">Tags (séparés par des virgules):</label><br>
+    <input type="text" id="tags" name="tags"><br><br>
+
+    <button type="submit">Créer le post</button>
+  </form>
+</body>
+</html>
