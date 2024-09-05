@@ -37,7 +37,15 @@
         <p><strong>Date de création:</strong> {{formatDate this.dateCreation}}</p>
         <p><strong>Contenu:</strong> {{this.contenu}}</p>
         <p><strong>Publié:</strong> {{#if this.publie}}Oui{{else}}Non{{/if}}</p>
-        <p><strong>Tags:</strong> {{#if this.tags}}{{this.tags.join ', '}}{{else}}Aucun{{/if}}</p>
+        <p><strong>Tags:</strong> 
+          {{#if this.tags}}
+            {{#each this.tags}}
+              {{this}}{{#unless @last}}, {{/unless}}
+            {{/each}}
+          {{else}}
+            Aucun
+          {{/if}}
+        </p>
         <button onclick="window.location.href='/edit-post/{{this._id}}'">Modifier</button>
         <form action="/post/{{this._id}}/delete" method="POST">
           <button type="submit">Supprimer</button>
