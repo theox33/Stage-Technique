@@ -20,14 +20,19 @@ Postgres est actuellement utilisé en production par de nombreuses entreprises t
 Postgres lui-même est un « serveur » de base de données. Il existe plusieurs façons de se connecter à Postgres via des « clients », y compris des interfaces graphiques (GUI), des interfaces en ligne de commande (CLI) et des langages de programmation souvent via des ORM.
 Pour exécuter et utiliser Postgres sur mon propre ordinateur, il faut *configurer à la fois un **serveur Postgres** et un **client***.
 
+Dans notre cas, le plus intéressant pour nous est qu'il est possible d'uploader des fichiers tels quel dans la base de donnée Postgre.
+
 ``` mermaid
 graph LR
-    A[Postgres Server] --> B[GUI Client <br/> E.g. Postbird, PgAdmin4, Postico, etc.]
-    A --> C[CLI Client <br/> E.g. psql]
-    A --> D[Programming Language Client <br/> E.g. ORM]
+    A[(<br/>‎ ‎‎ ‎  ‎ ‎ Serveur‎ ‎ ‎ ‎ ‎ ‎  <br/> Postgre<br/>‎ )] --> B[Client GUI <br/> *Ex: Postbird, PgAdmin4, Postico, etc.*]
+    A --> C[Client CLI <br/> *Ex: psql*]
+    A --> D[Langage de programmation client <br/> *Ex: ORM*]
     
     style A fill:#4b0082,stroke:#333,stroke-width:2px,color:#fff
     style B fill:#4b0082,stroke:#333,stroke-width:2px,color:#fff
     style C fill:#4b0082,stroke:#333,stroke-width:2px,color:#fff
     style D fill:#4b0082,stroke:#333,stroke-width:2px,color:#fff
 ```
+
+## Configuration du serveur Postgre
+
