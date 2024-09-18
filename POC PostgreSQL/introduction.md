@@ -34,5 +34,8 @@ graph LR
     style D fill:#4b0082,stroke:#333,stroke-width:2px,color:#fff
 ```
 
-## Configuration du serveur Postgre
+## Configuration du serveur Postgres
+
+J'ai installé Postgres sur Windows ainsi que le logiciel Postbird qui permet d'avoir une interface graphique avec Postgres au lieu d'utiliser exclusivement les commandes dans un terminal.
+À partir de Postbird je peux commencer à écrire des requêtes SQL, sélectionner une base de données avec laquelle travailler, ajouter des tables et les manipuler.
 
