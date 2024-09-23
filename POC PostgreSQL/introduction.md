@@ -106,3 +106,69 @@ Cela a créé le dossier `/src/file` avec dedans un contrôleur, module et servi
 
 ![image](https://github.com/user-attachments/assets/3908155d-0645-4287-945d-7c7fc4728c46)
 
+`file.entity.ts`
+``` typescript
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
+@Entity()
+export class File {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ type: 'varchar' })
+  fileName: string;
+
+  @Column({ type: 'varchar' })
+  fileType: string;
+
+  @Column({ type: 'int' })
+  fileSize: number;
+
+  // Colonne pour stocker les données binaires du fichier
+  @Column({ type: 'bytea' })
+  fileData: Buffer;
+}
+```
+
+> J'ai ici défini les colonnes d'une entité `File`. Ainsi, chaque fichier dispose de son identifiant unique, son nom, son type, sa taille, et ses données binaires *(elles seront utilisées pour reconstituer le fichier)*.
+
+### Définition de service et contrôleur de l'entité
+
+Je mets maintenant à jour le fichier de service des fichiers et effectue des opérations CRUD :
+
+`file.service.ts`
+``` typescript
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { File } from './entities/file.entity';
+
+@Injectable()
+export class FileService {
+  constructor(
+    @InjectRepository(File) private readonly fileRepository: Repository<File>,
+  ) {}
+
+  async uploadFile(file: Express.Multer.File): Promise<File> {
+    const newFile = new File();
+    newFile.fileName = file.originalname;
+    newFile.fileType = file.mimetype;
+    newFile.fileSize = file.size;
+    newFile.fileData = file.buffer;
+
+    return this.fileRepository.save(newFile);
+  }
+
+  async getFile(id: number): Promise<File> {
+    return this.fileRepository.findOneBy({ id });
+  }
+
+  async getFileMetadata(id: number): Promise<File> {
+    return this.fileRepository.findOne({
+      where: { id },
+      select: ['id', 'fileName', 'fileType', 'fileSize'],
+    });
+  }  
+}
+```
+
