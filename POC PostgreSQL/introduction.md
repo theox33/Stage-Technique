@@ -1,13 +1,18 @@
-# Introduction
+# Introduction POC PostgreSQL
 
 ## Dépréciation des services Mongo Atlas
 
-Le service permettant la mise en ligne de fichiers avec Online Archive a été dépréciée en début de semaine.
-Le travail effectué dans le but de gérer un stockage de fichiers dynamique sur MongoDb Atlas n'est donc plus d'aucune utilité pour la suite.
+Le service permettant la mise en ligne de fichiers avec Online Archive a été dépréciée en début de semaine. *(Voir la [🛑 Réunion dépréciation](https://github.com/users/theox33/projects/1/views/1?pane=issue&itemId=80737220) pour plus de détails)*
 
-L'équipe est en train de réfléchir à une autre solution pour staocker les ichiers actuellement.
-L'idée qui fait le plus consensus est de garder MongoDB 
+Le travail effectué dans le but de gérer un stockage de fichiers dynamique sur MongoDb Atlas doit donc être interrompu.
 
+Il nous faut donc adopter une nouvelle architecture et y développer d'autres API.
+
+## Objectif
+
+Comme dit à l'issue de la réunion, le travail effectué avec MongoDb Atlas peut me servir de base pour créer une API qui permettra d'uploader des documents et garder leur métadonnées. Pour celà, ma Tech Lead m'a conseillé d'utiliser la BDD PostGreSQL qui permet une gestion de documents native.
+
+L'idée est d'avoir une première esquisse de l'API qui recevra les documents depuis la solution vers PowerSync. Il faut donc qu'elle fonctionne avec des requêtes ajax, et non implémenter du front afin de permettre une scalabilité importante pour potentiellement directement l'implémenter dans le logiciel.
 
 ## PostgreSQL
 
@@ -36,6 +41,68 @@ graph LR
 
 ## Configuration du serveur Postgres
 
-J'ai installé Postgres sur Windows ainsi que le logiciel Postbird qui permet d'avoir une interface graphique avec Postgres au lieu d'utiliser exclusivement les commandes dans un terminal.
-À partir de Postbird je peux commencer à écrire des requêtes SQL, sélectionner une base de données avec laquelle travailler, ajouter des tables et les manipuler.
+J'ai installé Postgres sur Windows ainsi que le logiciel Dbeaver qui permet d'avoir une interface graphique avec Postgres au lieu d'utiliser exclusivement les commandes dans un terminal.
+À partir de DBeaver je peux commencer à écrire des requêtes SQL, sélectionner une base de données avec laquelle travailler, ajouter des tables et les manipuler.
+
+Je ne vais pas détailler l'intallation de PostgreSQL car il s'agit d'un simple installeur avec des étapes à suivre.
+
+## Création d'une nouvelle app NestJS
+
+De la même manière que les fois précédentes, je créé une app NestJS en utilisant les commandes du terminal. `nest new upload-api`
+Je créé donc le projet `upload-api` qui me permettra :
+- Uploader des documents
+- Générer un fichier de métadonnées
+- Télécharger le document
+- Obtenir les métadonnées
+
+Une fois le projet créé, j'installe les dépendances nécessaires comme `multer` pour l'upload de documents et trois autres packages `@nestjs/typeorm`, `typeorm` et `pg`. Le package `@nestjs/typeorm` est utilisé pour obtenir les modules TypeOrm et d’autres modules importants pour travailler avec TypeOrm. J'ai également installé `pg`, qui aide à se connecter et à communiquer avec la base de données PostgreSQL.
+
+### Connexion à la base de données
+
+J'ajoute le module TypeORM dans le module de l'application pour établir la connexion avec PostGreSQL `/src/app.module.ts` comme ceci :
+
+``` typescript
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { FileModule } from './file/file.module';
+import { File } from './file/entities/file.entity';
+
+@Module({
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'postgres',
+      database: 'upload-api',
+      entities: [File],
+      synchronize: true,
+      logging: true,
+    }),
+    FileModule,
+  ],
+})
+export class AppModule {}
+```
+
+> Ici, on comprend bien qu'il s'agit des propriétés de ma base de données créé localement précédamment avec PostGreSQL qui sont nécessaires pour établir la connexion avec l'API NestJS. La base de données s'appelle `upload-api` et j'ai mis un profil/mot de passe par défaut simple `postgres`, elle a un port d'écoute je j'ai réglé lors de l'installation à 5432.
+
+> [!NOTE]
+> J'ai décidé de créer une entitée nommée `File` pour définir et manipuler des `Files` *(= fichiers)* que je définirai plus tard.
+
+#### Test de connexion
+
+En lançant un simple `npm run start:dev`, je vois si la connexion s'effectue entre mon API et ma BDD.
+Auncun message d'erreur ne s'est affiché et l'application fonctionne normalement. Je peux donc continuer.
+
+### Création d'une entité
+
+Maintenant, je peux créer une entité nommée “File” avec laquelle j'effectuerai les opérations CRUD pour la gestion de fichiers :
+
+J'ai découvert qu'on pouvait également faire ça avec une commande dans le terminal : `nest g res file`.
+
+Cela a créé le dossier `/src/file` avec dedans un contrôleur, module et service par défaut pour l'entité `file` ainsi qu'un dossier `/src/file/entities` avec le fichier définissant l'entité file :
+
+![image](https://github.com/user-attachments/assets/3908155d-0645-4287-945d-7c7fc4728c46)
 
