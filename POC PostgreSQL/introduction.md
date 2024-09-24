@@ -273,11 +273,11 @@ L'ID du document envoyé est `4`. Je vais donc tenter d'obtenir ses métadonnée
 > [!NOTE]
 > Il est également possible de faire ça pour des fichiers autres que .txt, voici par exemple un .pdf ou .png :
 >
-> ### Upload
+> #### Upload
 > ![image](https://github.com/user-attachments/assets/0895919e-e1b4-4e85-9411-f37662c5e249)
 > ![image](https://github.com/user-attachments/assets/08920869-0491-4392-b266-790469352b5a)
 >
-> ## Téléchargement
+> #### Téléchargement
 > ![image](https://github.com/user-attachments/assets/e0cbafc0-0650-4f05-8abc-e62d59b97fe4)
 > ![image](https://github.com/user-attachments/assets/0422e22e-e825-49c8-a56a-a46426d040d8)
 
