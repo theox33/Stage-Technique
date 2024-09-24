@@ -235,60 +235,60 @@ export class FileController {
 
 > Le fichier `file.controller.ts` quant à lui, définit les routes de l'API pour interagir avec les fichiers. La route `POST /file/upload` permet de télécharger un fichier vers le serveur, en utilisant l'intercepteur `Multer` pour traiter le fichier avant de l'envoyer au service pour stockage. Ensuite, la route `GET /file/download/:id` est utilisée pour récupérer et télécharger un fichier spécifique, identifié par son ID. Si le fichier est trouvé, il est renvoyé avec les en-têtes appropriés pour le téléchargement. La route `GET /file/metadata/:id` permet d’obtenir uniquement les métadonnées d’un fichier, sans transmettre son contenu binaire, ce qui est utile pour afficher des informations sur le fichier sans en récupérer l’intégralité. Enfin, la route `GET /file/delete/:id` vérifie l'existance d'un fichier, puis renvoie les informations du fichier supprimé.
 
-## Test de l'API
+# Test de l'API
 
 Maintenant, je teste l'implémentation de mes routes avec Postman :
 
-### Upload d'un document
+## Upload d'un document
 
-#### Postman
+### Postman
 ![image](https://github.com/user-attachments/assets/26db3766-c4b0-461e-86c3-d7de5c12f518)
 
-#### Console de l'application NestJS
+### Console de l'application NestJS
 ![image](https://github.com/user-attachments/assets/440d1f47-7a34-4c0f-8ef6-6a8a78d16a1a)
 
 > On voit que le fichier a bien été inséré dans la BDD puis que l'application renvoie les métadonnées ainsi que le buffer du fichier uploadé.
 
-#### Base de données locale Postgres
+### Base de données locale Postgres
 ![image](https://github.com/user-attachments/assets/82e434f6-031c-4ae5-9bb8-4d5672b8b9ae)
 
-### Récupération des métadonnées d'un document
+## Récupération des métadonnées d'un document
 
 L'ID du document envoyé est `4`. Je vais donc tenter d'obtenir ses métadonnées :
 
-#### Postman
+### Postman
 ![image](https://github.com/user-attachments/assets/707f5fb9-7683-4efd-878a-849cb84ff13f)
 
-#### Console de l'application NestJS
+### Console de l'application NestJS
 ![image](https://github.com/user-attachments/assets/63cf9d57-b092-46b6-9910-474849c8d04e)
 
-### Téléchargement d'un document
+## Téléchargement d'un document
 
-#### Console de l'application NestJS
+### Console de l'application NestJS
 ![image](https://github.com/user-attachments/assets/576482eb-2b46-42b0-8a5b-fb79a352af6f)
 
-#### Postman
+### Postman
 ![image](https://github.com/user-attachments/assets/23bf03fe-6bba-477c-a659-14a5eb2a554a)
 
 > [!NOTE]
 > Il est également possible de faire ça pour des fichiers autres que .txt, voici par exemple un .pdf ou .png :
 >
-> #### Upload
+> ### Upload
 > ![image](https://github.com/user-attachments/assets/0895919e-e1b4-4e85-9411-f37662c5e249)
 > ![image](https://github.com/user-attachments/assets/08920869-0491-4392-b266-790469352b5a)
 >
-> ### Téléchargement
+> ## Téléchargement
 > ![image](https://github.com/user-attachments/assets/e0cbafc0-0650-4f05-8abc-e62d59b97fe4)
 > ![image](https://github.com/user-attachments/assets/0422e22e-e825-49c8-a56a-a46426d040d8)
 
-### Suppression d'un document
+## Suppression d'un document
 
-#### Postman
+### Postman
 ![image](https://github.com/user-attachments/assets/dd572bbf-6b12-45d9-a4d3-cc8737682d6d)
 
-#### Base de données
+### Base de données
 ![image](https://github.com/user-attachments/assets/11e8eb91-bf2c-45d4-b353-40c676fd1816)
 
-#### Console de l'application NestJS
+### Console de l'application NestJS
 ![image](https://github.com/user-attachments/assets/bfac59fe-ac9c-4871-8c95-d1375e4a1ff8)
 
