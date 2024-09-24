@@ -61,6 +61,7 @@ Une fois le projet créé, j'installe les dépendances nécessaires comme `multe
 
 J'ajoute le module TypeORM dans le module de l'application pour établir la connexion avec PostGreSQL `/src/app.module.ts` comme ceci :
 
+#### `app.module.ts`
 ``` typescript
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -106,7 +107,7 @@ Cela a créé le dossier `/src/file` avec dedans un contrôleur, module et servi
 
 ![image](https://github.com/user-attachments/assets/3908155d-0645-4287-945d-7c7fc4728c46)
 
-`file.entity.ts`
+#### `file.entity.ts`
 ``` typescript
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -132,11 +133,11 @@ export class File {
 
 > J'ai ici défini les colonnes d'une entité `File`. Ainsi, chaque fichier dispose de son identifiant unique, son nom, son type, sa taille, et ses données binaires *(elles seront utilisées pour reconstituer le fichier)*.
 
-### Définition de service et contrôleur de l'entité
+### Définition du service et du contrôleur de l'entité
 
 Je mets maintenant à jour le fichier de service des fichiers et effectue des opérations CRUD :
 
-`file.service.ts`
+#### `file.service.ts`
 ``` typescript
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -172,3 +173,70 @@ export class FileService {
 }
 ```
 
+> Dans `file.service.ts`, le service gère la logique métier de manipulation des fichiers. La méthode `uploadFile` prend un fichier en entrée, extrait ses informations *(nom, type, taille)* et le contenu binaire pour créer un nouvel enregistrement dans la base de données. Ensuite, ce fichier est sauvegardé à l'aide de `TypeORM`, ce qui permet de l'ajouter facilement à la base de données `PostgreSQL`. Le service propose également des méthodes pour récupérer un fichier complet (méthode `getFile`) ou seulement ses métadonnées (méthode `getFileMetadata`), offrant ainsi un accès flexible aux informations stockées.
+
+#### `file.controller.ts`
+``` typescript
+import { Controller, Post, UploadedFile, UseInterceptors, Get, Param, Res, NotFoundException } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { FileService } from './file.service';
+import { Response } from 'express';
+
+@Controller('file')
+export class FileController {
+  constructor(private readonly fileService: FileService) {}
+
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadFile(@UploadedFile() file: Express.Multer.File) {
+    return this.fileService.uploadFile(file);
+  }
+
+  // Route pour télécharger le fichier
+  @Get('download/:id')
+  async downloadFile(@Param('id') id: number, @Res() res: Response) {
+    const file = await this.fileService.getFile(id);
+    if (!file) {
+      throw new NotFoundException('Fichier non trouvé');
+    }
+
+    // Configurer les en-têtes pour le téléchargement
+    res.set({
+      'Content-Type': file.fileType,
+      'Content-Disposition': `attachment; filename="${file.fileName}"`,
+    });
+
+    // Envoyer les données binaires du fichier
+    res.send(file.fileData);
+  }
+
+  // Route pour obtenir les métadonnées d'un fichier
+  @Get('metadata/:id')
+  async getFileMetadata(@Param('id') id: number) {
+    const file = await this.fileService.getFileMetadata(id);
+    if (!file) {
+      throw new NotFoundException('Fichier non trouvé');
+    }
+
+    // Retourner uniquement les métadonnées, sans les données binaires
+    return {
+      id: file.id,
+      fileName: file.fileName,
+      fileType: file.fileType,
+      fileSize: file.fileSize,
+    };
+  }
+}
+```
+
+> Le fichier `file.controller.ts` quant à lui, définit les routes de l'API pour interagir avec les fichiers. La route `POST /file/upload` permet de télécharger un fichier vers le serveur, en utilisant l'intercepteur `Multer` pour traiter le fichier avant de l'envoyer au service pour stockage. Ensuite, la route `GET /file/download/:id` est utilisée pour récupérer et télécharger un fichier spécifique, identifié par son ID. Si le fichier est trouvé, il est renvoyé avec les en-têtes appropriés pour le téléchargement. Enfin, la route `GET /file/metadata/:id` permet d’obtenir uniquement les métadonnées d’un fichier, sans transmettre son contenu binaire, ce qui est utile pour afficher des informations sur le fichier sans en récupérer l’intégralité.
+
+## Test de l'API
+
+Maintenant, je teste l'implémentation de mes routes avec Postman :
+
+1. ### Upload d'un document
+
+2. ### Récupération des métadonnées d'un document
+
+3. ### Téléchargement d'un document
