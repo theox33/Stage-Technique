@@ -39,6 +39,26 @@ graph LR
     style D fill:#4b0082,stroke:#333,stroke-width:2px,color:#fff
 ```
 
+## Structure du projet PowerSync pour la gestion de documents utilisateurs
+
+Une semaine après la réunion, la structure logiciel s'est clarifiée :
+
+``` mermaid
+graph BT
+    A[SDK PowerSync + SDK Supabase] --> |Write data|B([API Supabase])
+    B --> |Authentification| F((Keycloak))
+    B --> |Storage| G((Bucket S3))
+    B --> |Database| H[(Postgres)]
+    H --> I[PowerSync Services]
+    I --> A
+    subgraph MongoDB Atlas
+    subgraph Cluster
+    J[Primary] --> K[Replicat] & L[Rplicat]
+    end
+    end
+    I <--> |Bucket Sync|Cluster
+```
+
 ## Configuration du serveur Postgres
 
 J'ai installé Postgres sur Windows ainsi que le logiciel Dbeaver qui permet d'avoir une interface graphique avec Postgres au lieu d'utiliser exclusivement les commandes dans un terminal.
