@@ -1,6 +1,8 @@
 Keycloak
 ========
 
+Commande pour lancer Kyecloak : ./bin/kc.bat start-dev
+
 To get help configuring Keycloak via the CLI, run:
 
 on Linux/Unix:
