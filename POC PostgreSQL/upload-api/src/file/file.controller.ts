@@ -1,6 +1,7 @@
-import { Controller, Post, UploadedFile, UseInterceptors, Get, Param, Res, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Param, Post, Delete, Req, UploadedFile, UseInterceptors, Res } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { FileService } from './file.service';
+import { RequestWithUser } from './types/express-request.interface';
 import { Response } from 'express';
 
 @Controller('file')
@@ -9,37 +10,26 @@ export class FileController {
 
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
-  async uploadFile(@UploadedFile() file: Express.Multer.File) {
-    return this.fileService.uploadFile(file);
+  async uploadFile(@UploadedFile() file: Express.Multer.File, @Req() req: RequestWithUser) {
+    const userId = req.user?.sub; // Cast de `req` en `unknown` puis en `RequestWithUser`
+    return this.fileService.uploadFile(file, userId);
   }
 
-  // Route pour télécharger le fichier
   @Get('download/:id')
-  async downloadFile(@Param('id') id: number, @Res() res: Response) {
-    const file = await this.fileService.getFile(id);
-    if (!file) {
-      throw new NotFoundException('Fichier non trouvé');
-    }
-
-    // Configurer les en-têtes pour le téléchargement
+  async downloadFile(@Param('id') id: number, @Req() req: RequestWithUser, @Res() res: Response) {
+    const userId = req.user?.sub;
+    const file = await this.fileService.getFile(id, userId);
     res.set({
       'Content-Type': file.fileType,
       'Content-Disposition': `attachment; filename="${file.fileName}"`,
     });
-
-    // Envoyer les données binaires du fichier
     res.send(file.fileData);
   }
 
-  // Route pour obtenir les métadonnées d'un fichier
   @Get('metadata/:id')
-  async getFileMetadata(@Param('id') id: number) {
-    const file = await this.fileService.getFileMetadata(id);
-    if (!file) {
-      throw new NotFoundException('Fichier non trouvé');
-    }
-
-    // Retourner uniquement les métadonnées, sans les données binaires
+  async getFileMetadata(@Param('id') id: number, @Req() req: RequestWithUser) {
+    const userId = req.user?.sub;
+    const file = await this.fileService.getFile(id, userId);
     return {
       id: file.id,
       fileName: file.fileName,
@@ -48,10 +38,16 @@ export class FileController {
     };
   }
 
-  // Route pour supprimer un fichier
-  @Get('delete/:id')
-  async deleteFile(@Param('id') id: number) {
-    await this.fileService.deleteFile(id);
+  @Get()
+  async getUserFiles(@Req() req: RequestWithUser) {
+    const userId = req.user?.sub;
+    return this.fileService.getUserFiles(userId);
+  }
+
+  @Delete(':id')
+  async deleteFile(@Param('id') id: number, @Req() req: RequestWithUser) {
+    const userId = req.user?.sub;
+    await this.fileService.deleteFile(id, userId);
     return { message: 'Fichier supprimé avec succès' };
   }
 }

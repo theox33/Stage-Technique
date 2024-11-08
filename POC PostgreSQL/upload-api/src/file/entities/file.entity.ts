@@ -17,4 +17,7 @@ export class File {
   // Colonne pour stocker les données binaires du fichier
   @Column({ type: 'bytea' })
   fileData: Buffer;
+
+  @Column({ type: 'varchar' })
+  userId: string; // ID Keycloak de l'utilisateur
 }
