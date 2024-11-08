@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload de Fichiers</title>
+</head>
+<body>
+  <h1>Uploader un Fichier</h1>
+  <form id="upload-form" enctype="multipart/form-data">
+    <input type="file" name="file" id="file-input" />
+    <button type="submit">Upload</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('upload-form');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+
+      const response = await fetch('/upload', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+      console.log(result);
+    });
+  </script>
+</body>
+</html>
